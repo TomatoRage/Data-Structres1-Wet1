@@ -18,6 +18,8 @@
 extern "C" {
 #endif
 
+#define TREE
+
 /* Return Values
  * ----------------------------------- */
 typedef enum {

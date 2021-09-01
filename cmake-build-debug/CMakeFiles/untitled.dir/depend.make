@@ -8,4 +8,5 @@ CMakeFiles/untitled.dir/Part1_SearchTree.cpp.obj: \
  ../Part1_SearchTree.cpp \
  ../library1.h
 CMakeFiles/untitled.dir/main.cpp.obj: \
+ ../library1.h \
  ../main.cpp

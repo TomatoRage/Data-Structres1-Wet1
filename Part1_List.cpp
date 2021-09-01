@@ -134,12 +134,13 @@ void Quit(void** DS){
     Dict ToCheck;
 
     if(*DS == nullptr)
-        exit(0);
+       return;
 
     ToCheck = ((DictStart)*DS)->start;
 
     free(*DS);
     *DS = nullptr;
+
     while(ToCheck != nullptr){
         Dict Temp = ToCheck->next;
 
@@ -147,6 +148,7 @@ void Quit(void** DS){
 
         ToCheck = Temp;
     }
+
 }
 
 #endif
