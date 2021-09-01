@@ -59,7 +59,7 @@ StatusType Add(void *DS, int key, void* value, void** node){
 
 StatusType Find(void *DS, int key, void** value){
 
-    Dict ToCheck = nullptr;
+    Dict ToCheck;
 
     if(DS == nullptr || value == nullptr)
         return INVALID_INPUT;
@@ -81,7 +81,7 @@ StatusType Find(void *DS, int key, void** value){
 
 StatusType Delete(void *DS, int key){
 
-    Dict ToCheck = nullptr;
+    Dict ToCheck;
     Dict Prev = nullptr;
 
     if(DS == nullptr){
@@ -107,7 +107,6 @@ StatusType Delete(void *DS, int key){
             }
 
             ((DictStart)DS)->NumOfElements--;
-            free(ToCheck->Info);
             free(ToCheck);
 
             return SUCCESS;
@@ -132,7 +131,7 @@ StatusType Size(void *DS, int *n){
 
 void Quit(void** DS){
 
-    Dict ToCheck = nullptr;
+    Dict ToCheck;
 
     if(*DS == nullptr)
         exit(0);
@@ -144,7 +143,6 @@ void Quit(void** DS){
     while(ToCheck != nullptr){
         Dict Temp = ToCheck->next;
 
-        free(ToCheck->Info);
         free(ToCheck);
 
         ToCheck = Temp;
