@@ -6,11 +6,11 @@
 
 #IncludeRegexTransform: 
 
-C:/Users/Ahmad/CLionProjects/untitled/Part1_List.cpp
+C:/Users/Ahmad/CLionProjects/untitled/Part1_SearchTree.cpp
 library1.h
 C:/Users/Ahmad/CLionProjects/untitled/library1.h
-cstdlib
--
+stdlib.h
+C:/Users/Ahmad/CLionProjects/untitled/stdlib.h
 
 C:/Users/Ahmad/CLionProjects/untitled/library1.h
 
