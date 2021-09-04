@@ -1,16 +1,8 @@
 #include "library1.h"
 #include "stdlib.h"
+#include "assert.h"
 
 #ifdef TREE
-
-static enum rotation{
-    LL = 0,
-    LR = 1,
-    RL = 2,
-    RR = 3
-};
-
-typedef enum rotation Rotation;
 
 // Tree Node
 typedef struct node_t{
@@ -28,9 +20,11 @@ typedef struct tree_head{
     struct node_t* start;
 }*Dict;
 
-static void RotateTreeForAdd(void* DS,Tree added_node); // Balances Tree
+static void RotateTree(void* DS,Tree designated_node,int key); // Balances Tree When Adding or Deleting a Node And Updates Heights
 static int Max(int x,int y); //Get Max Out Of Two Numbers
-static void FreeTreeNode(Tree Node); //r=Recursive function used to free nodes
+static void FreeTreeNode(Tree Node); //Recursive function used to free nodes
+static void LLRotate(Tree root); // Does Right Rotation
+static void RRRotate(Tree root); // Does Left Rotation
 
 void* Init(){
 
@@ -47,13 +41,12 @@ void* Init(){
 
 StatusType Add(void *DS, int key, void* value, void** node){
 
-    Tree ToAddAfter = nullptr;
-    Tree FatherToGetHeight = nullptr;
+    Tree ToAddAfter; // Father of added node
 
     if(DS == nullptr || node == nullptr)
         return INVALID_INPUT;
 
-    Tree Node = (Tree) malloc(sizeof(*Node));
+    Tree Node = (Tree) malloc(sizeof(*Node)); // Our added Node
 
     if(Node == nullptr)
         return ALLOCATION_ERROR;
@@ -67,6 +60,7 @@ StatusType Add(void *DS, int key, void* value, void** node){
 
     ToAddAfter = ((Dict)DS)->start;
 
+    //In case of Node being first root
     if(ToAddAfter == nullptr){
         ((Dict)DS)->start = Node;
         ((Dict)DS)->TreeSize++;
@@ -79,7 +73,7 @@ StatusType Add(void *DS, int key, void* value, void** node){
 
             if(ToAddAfter->right_son == nullptr){
                 ToAddAfter->right_son = Node;
-                Node->father = ToAddAfter->right_son;
+                Node->father = ToAddAfter;
                 ((Dict)DS)->TreeSize++;
                 break;
             }
@@ -90,11 +84,11 @@ StatusType Add(void *DS, int key, void* value, void** node){
 
         }
 
-        if(Node->Key < ToAddAfter->Key){
+        else if(Node->Key < ToAddAfter->Key){
 
             if(ToAddAfter->left_son == nullptr){
                 ToAddAfter->left_son = Node;
-                Node->father = ToAddAfter->left_son;
+                Node->father = ToAddAfter;
                 ((Dict)DS)->TreeSize++;
                 break;
             }
@@ -107,25 +101,7 @@ StatusType Add(void *DS, int key, void* value, void** node){
 
     }
 
-   /* FatherToGetHeight = Node->father;
-
-    while(FatherToGetHeight != nullptr){
-
-        int RightSonHeight = 0;
-        int LeftSonHeight = 0;
-
-        if(FatherToGetHeight->right_son != nullptr)
-            RightSonHeight = FatherToGetHeight->right_son->TreeHeight;
-        if(FatherToGetHeight->left_son != nullptr)
-            LeftSonHeight = FatherToGetHeight->left_son->TreeHeight;
-
-        FatherToGetHeight->TreeHeight = Max(RightSonHeight,LeftSonHeight) + 1;
-
-        FatherToGetHeight = FatherToGetHeight->father;
-
-    }*/
-
-    RotateTreeForAdd(DS,Node);
+    RotateTree(DS,Node->father,key); // Balance Tree After Adding
 
     return SUCCESS;
 }
@@ -148,7 +124,7 @@ StatusType Find(void *DS, int key, void** value){
 
         if(nextToCheck->Key > key)
             nextToCheck = nextToCheck->left_son;
-        if(nextToCheck->Key < key)
+        else if(nextToCheck->Key < key)
             nextToCheck = nextToCheck->right_son;
     }
     return FAILURE;
@@ -156,6 +132,94 @@ StatusType Find(void *DS, int key, void** value){
 
 StatusType Delete(void *DS, int key){
 
+    Tree ToDelete;
+
+    if(DS == nullptr)
+        return INVALID_INPUT;
+
+    ToDelete = ((Dict)DS)->start;
+
+     if(ToDelete == nullptr)
+         return FAILURE;
+
+    while(ToDelete != nullptr){
+
+        if(ToDelete->Key == key){
+
+            //Removes toDelete from the Tree
+
+            if(ToDelete->right_son == nullptr && ToDelete->left_son == nullptr){
+                if(ToDelete->father != nullptr) {
+                    //In case toDelete is a leaf
+                    if (ToDelete->father->right_son == ToDelete)
+                        ToDelete->father->right_son = nullptr;
+                    if (ToDelete->father->left_son == ToDelete)
+                        ToDelete->father->left_son = nullptr;
+                }
+                else
+                    //In case only ToDelete in the tree
+                    ((Dict)DS)->start = nullptr;
+            }
+            else{
+                if(ToDelete->right_son == nullptr){
+
+                    if(ToDelete->father == nullptr)
+                        //In case toDelete is the main root
+                        ((Dict)DS)->start = ToDelete->left_son;
+                    else{
+                        if (ToDelete->father->right_son == ToDelete)
+                            ToDelete->father->right_son = ToDelete->left_son;
+                        if (ToDelete->father->left_son == ToDelete)
+                            ToDelete->father->left_son = ToDelete->left_son;
+                    }
+
+                }
+                else{
+                    //In case toDelete is inner root replace the next least key
+                    Tree Temp = ToDelete->right_son;
+
+                    while(Temp->left_son != nullptr)
+                        Temp = Temp->left_son;
+
+                    ToDelete->Key = Temp->Key;
+                    ToDelete->Info = Temp->Info;
+
+                    if(Temp->left_son == nullptr && Temp->right_son == nullptr){
+                        if(Temp->father->right_son == Temp)
+                            Temp->father->right_son = nullptr;
+                        if(Temp->father->left_son == Temp)
+                            Temp->father->left_son = nullptr;
+                    }
+                    else{
+                        if(ToDelete->right_son == Temp){
+                            ToDelete->right_son = Temp->right_son;
+                            Temp->right_son->father = ToDelete;
+                        }
+                        else{
+                            Temp->father->left_son = Temp->right_son;
+                            Temp->right_son->father = Temp->father;
+                        }
+                    }
+
+                    ToDelete = Temp;
+                }
+            }
+
+            //Balances Tree after removing toDelete from the Tree
+
+            RotateTree(DS,ToDelete->father,key);
+            ((Dict)DS)->TreeSize--;
+            free(ToDelete);
+
+            return SUCCESS;
+        }
+
+        if(ToDelete->Key > key)
+            ToDelete = ToDelete->left_son;
+        else if(ToDelete->Key < key)
+            ToDelete = ToDelete->right_son;
+    }
+    return FAILURE;
 }
 
 StatusType Size(void *DS, int *n){
@@ -170,16 +234,20 @@ StatusType Size(void *DS, int *n){
 
 void Quit(void** DS){
 
+    // Frees each node then frees the pointer
+
     if(DS == nullptr)
         return;
 
     FreeTreeNode(((Dict)*DS)->start);
     free(*DS);
 
-    return;
+    *DS = nullptr;
 }
 
 static void FreeTreeNode(Tree Node){
+
+    //Frees Post Order
 
     if(Node == nullptr)
         return;
@@ -189,11 +257,12 @@ static void FreeTreeNode(Tree Node){
     free(Node);
 }
 
-static void RotateTreeForAdd(void *DS,Tree node_change){
+/** Function calculates BF from bottom to top if its 2 or -2 checks the wanted son BF and calls for rotate accordingly **/
 
-    Tree father = node_change->father;
-    Tree PrevSon;
-    int PrevBF = 0;
+static void RotateTree(void *DS,Tree designated_node,int key){
+
+    Tree father = designated_node;
+    int PrevBF;
     int BF;
 
     while(father != nullptr){
@@ -208,23 +277,62 @@ static void RotateTreeForAdd(void *DS,Tree node_change){
 
         BF = LeftSonHeight - RightSonHeight;
 
-        if(father->TreeHeight == Max(RightSonHeight,LeftSonHeight) + 1 && !(BF == -2 || BF == 2)){
-            break;
+        assert(BF <= 2 && BF >= -2);
+
+        if(BF == 2){
+
+            RightSonHeight = 0;
+            LeftSonHeight = 0;
+
+            if(father->left_son->right_son != nullptr)
+                RightSonHeight = father->left_son->right_son->TreeHeight;
+            if(father->left_son->left_son != nullptr)
+                LeftSonHeight = father->left_son->left_son->TreeHeight;
+
+            PrevBF = LeftSonHeight-RightSonHeight;
+
+            if(PrevBF >= 0){
+
+                LLRotate(father);
+
+            }
+            else if(PrevBF == -1){
+
+                RRRotate(father->left_son);
+                LLRotate(father);
+
+            }
+
+        }
+        else if(BF == -2){
+
+            RightSonHeight = 0;
+            LeftSonHeight = 0;
+
+            if(father->right_son->right_son != nullptr)
+                RightSonHeight = father->right_son->right_son->TreeHeight;
+            if(father->right_son->left_son != nullptr)
+                LeftSonHeight = father->right_son->left_son->TreeHeight;
+
+            PrevBF = LeftSonHeight-RightSonHeight;
+
+            if(PrevBF <= 0){
+                RRRotate(father);
+            }
+            else if(PrevBF == -1){
+
+                LLRotate(father->right_son);
+                RRRotate(father);
+
+            }
         }
 
-        father->TreeHeight = Max(RightSonHeight,LeftSonHeight) + 1;
-
-        if(BF == 2 || BF == -2){
-
-        }
-
-        PrevBF = BF;
-        PrevSon = father;
+        if(father->father == nullptr)
+            ((Dict)DS)->start = father;
         father = father->father;
     }
 
 }
-
 
 static int Max(int x,int y){
     if(x>y)
@@ -232,26 +340,94 @@ static int Max(int x,int y){
     return y;
 }
 
-/*    Rotation Path;
-    Tree father;
+static void LLRotate(Tree root){
 
-    father = node_change;
+    // Rotate LL
 
-    if(((Dict)DS)->start->Key < node_change->Key){
-        if(((Dict)DS)->start->left_son->Key < node_change->Key)
-            Path = LL;
-        else
-            Path = LR;
+    Tree TempSon = root->left_son->right_son;
+    Tree TempFather = root->left_son;
+    root->left_son = TempSon;
+    TempFather->right_son = root;
+    TempFather->father = root->father;
+    root->father = TempFather;
+    root = TempFather;
+
+    if(root->father != nullptr){
+        if(root->father->right_son == root->right_son)
+            root->father->right_son = root;
+        if(root->father->left_son == root->right_son)
+            root->father->left_son = root;
     }
-    else{
-        if(((Dict)DS)->start->left_son->Key < node_change->Key)
-            Path = RL;
-        else
-            Path = RR;
+
+    if(TempSon != nullptr)
+        TempSon->father = root->right_son;
+
+    // Fix Trees Heights
+
+    int RightSonHeight = 0;
+    int LeftSonHeight = 0;
+
+    if(root->right_son->right_son != nullptr)
+        RightSonHeight = root->right_son->right_son->TreeHeight;
+    if(root->right_son->left_son != nullptr)
+        LeftSonHeight = root->right_son->left_son->TreeHeight;
+
+    root->right_son->TreeHeight = Max(RightSonHeight,LeftSonHeight) + 1;
+
+    RightSonHeight = 0;
+    LeftSonHeight = 0;
+
+    if(root->right_son != nullptr)
+        RightSonHeight = root->right_son->TreeHeight;
+    if(root->left_son != nullptr)
+        LeftSonHeight = root->left_son->TreeHeight;
+
+    root->TreeHeight = Max(RightSonHeight,LeftSonHeight) + 1;
+}
+
+static void RRRotate(Tree root){
+
+    // Rotate RR
+
+    Tree TempSon = root->right_son->left_son;
+    Tree TempFather = root->right_son;
+    root->right_son = TempSon;
+    TempFather->left_son = root;
+    TempFather->father = root->father;
+    root->father = TempFather;
+    root = TempFather;
+
+    if(root->father != nullptr){
+        if(root->father->right_son == root->left_son)
+            root->father->right_son = root;
+        if(root->father->left_son == root->left_son)
+            root->father->left_son = root;
     }
 
-    switch(Path) {
-        case 0:
+    if(TempSon != nullptr)
+        TempSon->father = root->left_son;
 
-    }*/
+    // Fix Trees Heights
+
+    int RightSonHeight = 0;
+    int LeftSonHeight = 0;
+
+    if(root->left_son->right_son != nullptr)
+        RightSonHeight = root->left_son->right_son->TreeHeight;
+    if(root->left_son->left_son != nullptr)
+        LeftSonHeight = root->left_son->left_son->TreeHeight;
+
+    root->left_son->TreeHeight = Max(RightSonHeight,LeftSonHeight) + 1;
+
+    RightSonHeight = 0;
+    LeftSonHeight = 0;
+
+    if(root->right_son != nullptr)
+        RightSonHeight = root->right_son->TreeHeight;
+    if(root->left_son != nullptr)
+        LeftSonHeight = root->left_son->TreeHeight;
+
+    root->TreeHeight = Max(RightSonHeight,LeftSonHeight) + 1;
+}
+
 #endif
