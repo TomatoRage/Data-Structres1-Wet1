@@ -8,9 +8,10 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
+  "C:/Users/Ahmad/CLionProjects/untitled/ImageTagger.cpp" "C:/Users/Ahmad/CLionProjects/untitled/cmake-build-debug/CMakeFiles/untitled.dir/ImageTagger.cpp.obj"
   "C:/Users/Ahmad/CLionProjects/untitled/Part1_List.cpp" "C:/Users/Ahmad/CLionProjects/untitled/cmake-build-debug/CMakeFiles/untitled.dir/Part1_List.cpp.obj"
   "C:/Users/Ahmad/CLionProjects/untitled/Part1_SearchTree.cpp" "C:/Users/Ahmad/CLionProjects/untitled/cmake-build-debug/CMakeFiles/untitled.dir/Part1_SearchTree.cpp.obj"
-  "C:/Users/Ahmad/CLionProjects/untitled/main.cpp" "C:/Users/Ahmad/CLionProjects/untitled/cmake-build-debug/CMakeFiles/untitled.dir/main.cpp.obj"
+  "C:/Users/Ahmad/CLionProjects/untitled/main2.cpp" "C:/Users/Ahmad/CLionProjects/untitled/cmake-build-debug/CMakeFiles/untitled.dir/main2.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

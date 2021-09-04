@@ -6,13 +6,19 @@
 
 #IncludeRegexTransform: 
 
-C:/Users/Ahmad/CLionProjects/untitled/Part1_SearchTree.cpp
-library1.h
-C:/Users/Ahmad/CLionProjects/untitled/library1.h
-stdlib.h
-C:/Users/Ahmad/CLionProjects/untitled/stdlib.h
-assert.h
-C:/Users/Ahmad/CLionProjects/untitled/assert.h
+C:/Users/Ahmad/CLionProjects/untitled/ImageTagger.cpp
 
-C:/Users/Ahmad/CLionProjects/untitled/library1.h
+C:/Users/Ahmad/CLionProjects/untitled/library2.h
+
+C:/Users/Ahmad/CLionProjects/untitled/main2.cpp
+assert.h
+-
+stdio.h
+-
+stdlib.h
+-
+string.h
+-
+library2.h
+C:/Users/Ahmad/CLionProjects/untitled/library2.h
 
