@@ -1,5 +1,5 @@
-#ifndef BINARYSEARCHTREE_H
-#define BINARYSEARCHTREE_H
+#ifndef UNTITLED_BINARYSEARCHTREE_H
+#define UNTITLED_BINARYSEARCHTREE_H
 
 template<class Key,class Info>
 class BST{
@@ -13,7 +13,6 @@ class BST{
         node* father;
         int Height;
 
-        node():right_son(nullptr),left_son(nullptr),Height(0),key(new Key),info(new Info) { }
     };
 
     node* root;
@@ -44,5 +43,7 @@ public:
     class FailureException{};
     class KeyNotFound: public FailureException{};
 };
+
+#include "BinarySearchTreeImp.h"
 
 #endif

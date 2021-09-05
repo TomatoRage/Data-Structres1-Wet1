@@ -1,4 +1,5 @@
-#include "BinarySearchTree.h"
+#ifndef UNTITLED_BINARYSEARCHTREEIMP_H
+#define UNTITLED_BINARYSEARCHTREEIMP_H
 
 template<class Key,class Info>
 BST<Key,Info>::BST(){
@@ -29,18 +30,18 @@ typename BST<Key,Info>::node* BST<Key, Info>::InsertNode(Key key, Info info, nod
         NodeToAdd = new node;
         NodeToAdd->key = key;
         NodeToAdd->info = info;
-        NodeToAdd->height = 0;
+        NodeToAdd->Height = 0;
         NodeToAdd->left_son = NodeToAdd->right_son = nullptr;
         Size++;
     }
 
     else if(key < NodeToAdd->key){
 
-        NodeToAdd->left_son = insert(NodeToAdd, NodeToAdd->left_son);
+        NodeToAdd->left_son = insert(key, NodeToAdd->left_son);
         if(height(NodeToAdd->left_son) - height(NodeToAdd->right_son) == 2)
         {
             if(key < NodeToAdd->left_son->key)
-                NodeToAdd = RightRotate(NodeToAdd);
+                NodeToAdd = RotateRight(NodeToAdd);
             else{
                 NodeToAdd->left_son = RotateLeft(NodeToAdd->left_son);
                 NodeToAdd = RotateRight(NodeToAdd);
@@ -63,10 +64,11 @@ typename BST<Key,Info>::node* BST<Key, Info>::InsertNode(Key key, Info info, nod
 
         }
 
-        NodeToAdd->height = max(height(NodeToAdd->left_son), height(NodeToAdd->right_son))+1;
+        NodeToAdd->Height = max(height(NodeToAdd->left_son), height(NodeToAdd->right_son))+1;
         return NodeToAdd;
     }
 
+    return NodeToAdd;
 }
 
 template<class Key,class Info>
@@ -85,7 +87,7 @@ template<class Key,class Info>
 typename BST<Key,Info>::node* BST<Key,Info>::RotateLeft(node *&Node){
 
     node* TempNode = Node->right_son;
-    Node->right = TempNode->left_son;
+    Node->right_son = TempNode->left_son;
     TempNode->left_son = Node;
     Node->Height = max(height(Node->left_son), height(Node->right_son))+1;
     TempNode->Height = max(height(TempNode->right_son), Node->Height)+1 ;
@@ -98,7 +100,7 @@ int BST<Key,Info>::height(node *Node) {
     if(Node == nullptr)
         return 0;
     if(Node->right_son)
-       Right = Node->right_son->Height;
+        Right = Node->right_son->Height;
     if(Node->left_son)
         Left = Node->left_son->Height;
     return max(Right,Left)+1;
@@ -117,6 +119,7 @@ typename BST<Key,Info>::node* BST<Key,Info>::FindSmallestNode(node *Tree) {
         return Tree;
     else
         FindSmallestNode(Tree);
+    return Tree;
 }
 
 template<class Key,class Info>
@@ -126,24 +129,24 @@ typename BST<Key,Info>::node* BST<Key,Info>::RemoveNode(Key key, node *Tree) {
         throw KeyNotFound();
 
     else if(key < Tree->key)
-        Tree->left_son = remove(key, Tree->left_son);
+        Tree->left_son = RemoveNode(key, Tree->left_son);
     else if(key > Tree->key)
-        Tree->right_son = remove(key, Tree->right_son);
+        Tree->right_son = RemoveNode(key, Tree->right_son);
 
     else if(Tree->left_son && Tree->right_son)
     {
-        node* temp,ToReplace = FindSmallestNode(Tree->right);
+        node* temp,*ToReplace = FindSmallestNode(Tree->right_son);
         ToReplace->left_son = Tree->left_son;
         temp = ToReplace->right_son;
         ToReplace->right_son = Tree->right_son;
         Tree->right_son = temp;
-        ToReplace->right = remove(Tree->key, ToReplace->right_son);
+        ToReplace->right_son = RemoveNode(Tree->key, ToReplace->right_son);
     }
     else{
         node* temp = Tree;
-        if(Tree->left == nullptr)
+        if(Tree->left_son == nullptr)
             Tree = Tree->right_son;
-        else if(Tree->right == nullptr)
+        else if(Tree->right_son == nullptr)
             Tree = Tree->left_son;
         delete temp;
         Size--;
@@ -191,11 +194,12 @@ Info& BST<Key,Info>::FindNode(Key key,node* Tree){
     else{
         return Tree->info;
     }
+    return Tree->info;
 }
 
 template<class Key,class Info>
 void BST<Key,Info>::DeleteNode(node *ToDelete) {
-    if(!ToDelete)
+    if(!ToDelete || Size == 1)
         return;
     DeleteNode(ToDelete->right_son);
     DeleteNode(ToDelete->left_son);
@@ -222,3 +226,5 @@ template<class Key,class Info>
 void BST<Key,Info>::clear() {
     DeleteNode(root);
 }
+
+#endif //UNTITLED_BINARYSEARCHTREEIMP_H

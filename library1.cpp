@@ -39,7 +39,7 @@ StatusType Find(void *DS, int key, void** value){
         return INVALID_INPUT;
     try{
 #ifdef TREE
-       *value = ((BST<int,void*>*)DS)->Find(key);
+        *value = ((BST<int,void*>*)DS)->Find(key);
 #else
         *value = ((LinkedList<int,void*>*)DS)->Find(key);
 #endif
@@ -88,9 +88,10 @@ void Quit(void** DS){
         return;
 #ifdef TREE
     ((BST<int,void*>*)DS)->clear();
+    delete *((BST<int,void*>**)DS);
 #else
     ((LinkedList<int,void*>*)DS)->clear();
+    delete *((LinkedList<int,void*>**)DS);
 #endif
-    delete *DS;
     DS = nullptr;
 }

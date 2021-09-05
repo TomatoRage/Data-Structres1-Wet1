@@ -129,78 +129,6 @@ untitled/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/build
 .PHONY : untitled/fast
 
-BinarySearchTree.o: BinarySearchTree.cpp.o
-.PHONY : BinarySearchTree.o
-
-# target to build an object file
-BinarySearchTree.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/BinarySearchTree.cpp.o
-.PHONY : BinarySearchTree.cpp.o
-
-BinarySearchTree.i: BinarySearchTree.cpp.i
-.PHONY : BinarySearchTree.i
-
-# target to preprocess a source file
-BinarySearchTree.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/BinarySearchTree.cpp.i
-.PHONY : BinarySearchTree.cpp.i
-
-BinarySearchTree.s: BinarySearchTree.cpp.s
-.PHONY : BinarySearchTree.s
-
-# target to generate assembly for a file
-BinarySearchTree.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/BinarySearchTree.cpp.s
-.PHONY : BinarySearchTree.cpp.s
-
-ImageTagger.o: ImageTagger.cpp.o
-.PHONY : ImageTagger.o
-
-# target to build an object file
-ImageTagger.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/ImageTagger.cpp.o
-.PHONY : ImageTagger.cpp.o
-
-ImageTagger.i: ImageTagger.cpp.i
-.PHONY : ImageTagger.i
-
-# target to preprocess a source file
-ImageTagger.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/ImageTagger.cpp.i
-.PHONY : ImageTagger.cpp.i
-
-ImageTagger.s: ImageTagger.cpp.s
-.PHONY : ImageTagger.s
-
-# target to generate assembly for a file
-ImageTagger.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/ImageTagger.cpp.s
-.PHONY : ImageTagger.cpp.s
-
-LinkedList.o: LinkedList.cpp.o
-.PHONY : LinkedList.o
-
-# target to build an object file
-LinkedList.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/LinkedList.cpp.o
-.PHONY : LinkedList.cpp.o
-
-LinkedList.i: LinkedList.cpp.i
-.PHONY : LinkedList.i
-
-# target to preprocess a source file
-LinkedList.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/LinkedList.cpp.i
-.PHONY : LinkedList.cpp.i
-
-LinkedList.s: LinkedList.cpp.s
-.PHONY : LinkedList.s
-
-# target to generate assembly for a file
-LinkedList.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/LinkedList.cpp.s
-.PHONY : LinkedList.cpp.s
-
 library1.o: library1.cpp.o
 .PHONY : library1.o
 
@@ -258,15 +186,6 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... untitled"
-	@echo "... BinarySearchTree.o"
-	@echo "... BinarySearchTree.i"
-	@echo "... BinarySearchTree.s"
-	@echo "... ImageTagger.o"
-	@echo "... ImageTagger.i"
-	@echo "... ImageTagger.s"
-	@echo "... LinkedList.o"
-	@echo "... LinkedList.i"
-	@echo "... LinkedList.s"
 	@echo "... library1.o"
 	@echo "... library1.i"
 	@echo "... library1.s"

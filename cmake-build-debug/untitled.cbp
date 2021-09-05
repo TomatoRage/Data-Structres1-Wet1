@@ -78,28 +78,22 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/Users/ahmadghanayem/CLionProjects/Data-Structres1-Wet1/BinarySearchTree.cpp">
-			<Option target="untitled"/>
-		</Unit>
 		<Unit filename="/Users/ahmadghanayem/CLionProjects/Data-Structres1-Wet1/BinarySearchTree.h">
 			<Option target="untitled"/>
 		</Unit>
-		<Unit filename="/Users/ahmadghanayem/CLionProjects/Data-Structres1-Wet1/ImageTagger.cpp">
-			<Option target="untitled"/>
-		</Unit>
-		<Unit filename="/Users/ahmadghanayem/CLionProjects/Data-Structres1-Wet1/LinkedList.cpp">
+		<Unit filename="/Users/ahmadghanayem/CLionProjects/Data-Structres1-Wet1/BinarySearchTreeImp.h">
 			<Option target="untitled"/>
 		</Unit>
 		<Unit filename="/Users/ahmadghanayem/CLionProjects/Data-Structres1-Wet1/LinkedList.h">
+			<Option target="untitled"/>
+		</Unit>
+		<Unit filename="/Users/ahmadghanayem/CLionProjects/Data-Structres1-Wet1/LinkedListImp.h">
 			<Option target="untitled"/>
 		</Unit>
 		<Unit filename="/Users/ahmadghanayem/CLionProjects/Data-Structres1-Wet1/library1.cpp">
 			<Option target="untitled"/>
 		</Unit>
 		<Unit filename="/Users/ahmadghanayem/CLionProjects/Data-Structres1-Wet1/library1.h">
-			<Option target="untitled"/>
-		</Unit>
-		<Unit filename="/Users/ahmadghanayem/CLionProjects/Data-Structres1-Wet1/library2.h">
 			<Option target="untitled"/>
 		</Unit>
 		<Unit filename="/Users/ahmadghanayem/CLionProjects/Data-Structres1-Wet1/main2.cpp">

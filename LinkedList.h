@@ -31,4 +31,6 @@ public:
 
 };
 
+#include "LinkedListImp.h"
+
 #endif //LINKEDLIST_H

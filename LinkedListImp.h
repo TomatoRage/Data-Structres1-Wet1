@@ -1,4 +1,5 @@
-#include "LinkedList.h"
+#ifndef LINKEDLISTIMP_H
+#define LINKEDLISTIMP_H
 
 template<class Key,class Info>
 LinkedList<Key,Info>::LinkedList():head(nullptr),tail(nullptr),Size(0){}
@@ -32,7 +33,7 @@ typename LinkedList<Key,Info>::node* LinkedList<Key,Info>::insert(Key key, Info 
 template<class Key,class Info>
 void LinkedList<Key,Info>::remove(Key key){
 
-    node* Prev,CurrentNode = head;
+    node* Prev,*CurrentNode = head;
 
     while(CurrentNode) {
 
@@ -84,9 +85,11 @@ void LinkedList<Key,Info>::clear() {
 
 template<class Key,class Info>
 void LinkedList<Key,Info>::deleteNode(node *ToDelete)  {
-    if(ToDelete == nullptr)
+    if(ToDelete == nullptr || Size == 0)
         return;
     deleteNode(ToDelete->next);
     Size--;
     delete ToDelete;
 }
+
+#endif //UNTITLED_LINKEDLISTIMP_H
