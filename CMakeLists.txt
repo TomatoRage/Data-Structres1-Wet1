@@ -3,4 +3,4 @@ project(untitled)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(untitled library1.h Part1_List.cpp Part1_SearchTree.cpp main2.cpp ImageTagger.cpp library2.h main2.cpp BinarySearchTree.h BinarySearchTree.cpp Library1.cpp LinkedList.h)
+add_executable(untitled ImageTagger.cpp library1.cpp library1.h library2.h BinarySearchTree.h BinarySearchTree.cpp library1.cpp LinkedList.h LinkedList.cpp main2.cpp)

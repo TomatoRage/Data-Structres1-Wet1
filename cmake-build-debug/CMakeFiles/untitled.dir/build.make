@@ -66,48 +66,9 @@ include CMakeFiles/untitled.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/untitled.dir/flags.make
 
-CMakeFiles/untitled.dir/Part1_List.cpp.o: CMakeFiles/untitled.dir/flags.make
-CMakeFiles/untitled.dir/Part1_List.cpp.o: ../Part1_List.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ahmadghanayem/CLionProjects/Data-Structres1-Wet1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/untitled.dir/Part1_List.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/untitled.dir/Part1_List.cpp.o -c /Users/ahmadghanayem/CLionProjects/Data-Structres1-Wet1/Part1_List.cpp
-
-CMakeFiles/untitled.dir/Part1_List.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/untitled.dir/Part1_List.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ahmadghanayem/CLionProjects/Data-Structres1-Wet1/Part1_List.cpp > CMakeFiles/untitled.dir/Part1_List.cpp.i
-
-CMakeFiles/untitled.dir/Part1_List.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/untitled.dir/Part1_List.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ahmadghanayem/CLionProjects/Data-Structres1-Wet1/Part1_List.cpp -o CMakeFiles/untitled.dir/Part1_List.cpp.s
-
-CMakeFiles/untitled.dir/Part1_SearchTree.cpp.o: CMakeFiles/untitled.dir/flags.make
-CMakeFiles/untitled.dir/Part1_SearchTree.cpp.o: ../Part1_SearchTree.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ahmadghanayem/CLionProjects/Data-Structres1-Wet1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/untitled.dir/Part1_SearchTree.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/untitled.dir/Part1_SearchTree.cpp.o -c /Users/ahmadghanayem/CLionProjects/Data-Structres1-Wet1/Part1_SearchTree.cpp
-
-CMakeFiles/untitled.dir/Part1_SearchTree.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/untitled.dir/Part1_SearchTree.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ahmadghanayem/CLionProjects/Data-Structres1-Wet1/Part1_SearchTree.cpp > CMakeFiles/untitled.dir/Part1_SearchTree.cpp.i
-
-CMakeFiles/untitled.dir/Part1_SearchTree.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/untitled.dir/Part1_SearchTree.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ahmadghanayem/CLionProjects/Data-Structres1-Wet1/Part1_SearchTree.cpp -o CMakeFiles/untitled.dir/Part1_SearchTree.cpp.s
-
-CMakeFiles/untitled.dir/main2.cpp.o: CMakeFiles/untitled.dir/flags.make
-CMakeFiles/untitled.dir/main2.cpp.o: ../main2.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ahmadghanayem/CLionProjects/Data-Structres1-Wet1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/untitled.dir/main2.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/untitled.dir/main2.cpp.o -c /Users/ahmadghanayem/CLionProjects/Data-Structres1-Wet1/main2.cpp
-
-CMakeFiles/untitled.dir/main2.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/untitled.dir/main2.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ahmadghanayem/CLionProjects/Data-Structres1-Wet1/main2.cpp > CMakeFiles/untitled.dir/main2.cpp.i
-
-CMakeFiles/untitled.dir/main2.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/untitled.dir/main2.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ahmadghanayem/CLionProjects/Data-Structres1-Wet1/main2.cpp -o CMakeFiles/untitled.dir/main2.cpp.s
-
 CMakeFiles/untitled.dir/ImageTagger.cpp.o: CMakeFiles/untitled.dir/flags.make
 CMakeFiles/untitled.dir/ImageTagger.cpp.o: ../ImageTagger.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ahmadghanayem/CLionProjects/Data-Structres1-Wet1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/untitled.dir/ImageTagger.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ahmadghanayem/CLionProjects/Data-Structres1-Wet1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/untitled.dir/ImageTagger.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/untitled.dir/ImageTagger.cpp.o -c /Users/ahmadghanayem/CLionProjects/Data-Structres1-Wet1/ImageTagger.cpp
 
 CMakeFiles/untitled.dir/ImageTagger.cpp.i: cmake_force
@@ -118,9 +79,22 @@ CMakeFiles/untitled.dir/ImageTagger.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/untitled.dir/ImageTagger.cpp.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ahmadghanayem/CLionProjects/Data-Structres1-Wet1/ImageTagger.cpp -o CMakeFiles/untitled.dir/ImageTagger.cpp.s
 
+CMakeFiles/untitled.dir/library1.cpp.o: CMakeFiles/untitled.dir/flags.make
+CMakeFiles/untitled.dir/library1.cpp.o: ../library1.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ahmadghanayem/CLionProjects/Data-Structres1-Wet1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/untitled.dir/library1.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/untitled.dir/library1.cpp.o -c /Users/ahmadghanayem/CLionProjects/Data-Structres1-Wet1/library1.cpp
+
+CMakeFiles/untitled.dir/library1.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/untitled.dir/library1.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ahmadghanayem/CLionProjects/Data-Structres1-Wet1/library1.cpp > CMakeFiles/untitled.dir/library1.cpp.i
+
+CMakeFiles/untitled.dir/library1.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/untitled.dir/library1.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ahmadghanayem/CLionProjects/Data-Structres1-Wet1/library1.cpp -o CMakeFiles/untitled.dir/library1.cpp.s
+
 CMakeFiles/untitled.dir/BinarySearchTree.cpp.o: CMakeFiles/untitled.dir/flags.make
 CMakeFiles/untitled.dir/BinarySearchTree.cpp.o: ../BinarySearchTree.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ahmadghanayem/CLionProjects/Data-Structres1-Wet1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/untitled.dir/BinarySearchTree.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ahmadghanayem/CLionProjects/Data-Structres1-Wet1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/untitled.dir/BinarySearchTree.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/untitled.dir/BinarySearchTree.cpp.o -c /Users/ahmadghanayem/CLionProjects/Data-Structres1-Wet1/BinarySearchTree.cpp
 
 CMakeFiles/untitled.dir/BinarySearchTree.cpp.i: cmake_force
@@ -131,40 +105,51 @@ CMakeFiles/untitled.dir/BinarySearchTree.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/untitled.dir/BinarySearchTree.cpp.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ahmadghanayem/CLionProjects/Data-Structres1-Wet1/BinarySearchTree.cpp -o CMakeFiles/untitled.dir/BinarySearchTree.cpp.s
 
-CMakeFiles/untitled.dir/Library1.cpp.o: CMakeFiles/untitled.dir/flags.make
-CMakeFiles/untitled.dir/Library1.cpp.o: ../Library1.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ahmadghanayem/CLionProjects/Data-Structres1-Wet1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/untitled.dir/Library1.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/untitled.dir/Library1.cpp.o -c /Users/ahmadghanayem/CLionProjects/Data-Structres1-Wet1/Library1.cpp
+CMakeFiles/untitled.dir/LinkedList.cpp.o: CMakeFiles/untitled.dir/flags.make
+CMakeFiles/untitled.dir/LinkedList.cpp.o: ../LinkedList.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ahmadghanayem/CLionProjects/Data-Structres1-Wet1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/untitled.dir/LinkedList.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/untitled.dir/LinkedList.cpp.o -c /Users/ahmadghanayem/CLionProjects/Data-Structres1-Wet1/LinkedList.cpp
 
-CMakeFiles/untitled.dir/Library1.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/untitled.dir/Library1.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ahmadghanayem/CLionProjects/Data-Structres1-Wet1/Library1.cpp > CMakeFiles/untitled.dir/Library1.cpp.i
+CMakeFiles/untitled.dir/LinkedList.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/untitled.dir/LinkedList.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ahmadghanayem/CLionProjects/Data-Structres1-Wet1/LinkedList.cpp > CMakeFiles/untitled.dir/LinkedList.cpp.i
 
-CMakeFiles/untitled.dir/Library1.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/untitled.dir/Library1.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ahmadghanayem/CLionProjects/Data-Structres1-Wet1/Library1.cpp -o CMakeFiles/untitled.dir/Library1.cpp.s
+CMakeFiles/untitled.dir/LinkedList.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/untitled.dir/LinkedList.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ahmadghanayem/CLionProjects/Data-Structres1-Wet1/LinkedList.cpp -o CMakeFiles/untitled.dir/LinkedList.cpp.s
+
+CMakeFiles/untitled.dir/main2.cpp.o: CMakeFiles/untitled.dir/flags.make
+CMakeFiles/untitled.dir/main2.cpp.o: ../main2.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ahmadghanayem/CLionProjects/Data-Structres1-Wet1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/untitled.dir/main2.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/untitled.dir/main2.cpp.o -c /Users/ahmadghanayem/CLionProjects/Data-Structres1-Wet1/main2.cpp
+
+CMakeFiles/untitled.dir/main2.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/untitled.dir/main2.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ahmadghanayem/CLionProjects/Data-Structres1-Wet1/main2.cpp > CMakeFiles/untitled.dir/main2.cpp.i
+
+CMakeFiles/untitled.dir/main2.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/untitled.dir/main2.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ahmadghanayem/CLionProjects/Data-Structres1-Wet1/main2.cpp -o CMakeFiles/untitled.dir/main2.cpp.s
 
 # Object files for target untitled
 untitled_OBJECTS = \
-"CMakeFiles/untitled.dir/Part1_List.cpp.o" \
-"CMakeFiles/untitled.dir/Part1_SearchTree.cpp.o" \
-"CMakeFiles/untitled.dir/main2.cpp.o" \
 "CMakeFiles/untitled.dir/ImageTagger.cpp.o" \
+"CMakeFiles/untitled.dir/library1.cpp.o" \
 "CMakeFiles/untitled.dir/BinarySearchTree.cpp.o" \
-"CMakeFiles/untitled.dir/Library1.cpp.o"
+"CMakeFiles/untitled.dir/LinkedList.cpp.o" \
+"CMakeFiles/untitled.dir/main2.cpp.o"
 
 # External object files for target untitled
 untitled_EXTERNAL_OBJECTS =
 
-untitled: CMakeFiles/untitled.dir/Part1_List.cpp.o
-untitled: CMakeFiles/untitled.dir/Part1_SearchTree.cpp.o
-untitled: CMakeFiles/untitled.dir/main2.cpp.o
 untitled: CMakeFiles/untitled.dir/ImageTagger.cpp.o
+untitled: CMakeFiles/untitled.dir/library1.cpp.o
 untitled: CMakeFiles/untitled.dir/BinarySearchTree.cpp.o
-untitled: CMakeFiles/untitled.dir/Library1.cpp.o
+untitled: CMakeFiles/untitled.dir/LinkedList.cpp.o
+untitled: CMakeFiles/untitled.dir/main2.cpp.o
 untitled: CMakeFiles/untitled.dir/build.make
 untitled: CMakeFiles/untitled.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/ahmadghanayem/CLionProjects/Data-Structres1-Wet1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable untitled"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/ahmadghanayem/CLionProjects/Data-Structres1-Wet1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable untitled"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/untitled.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

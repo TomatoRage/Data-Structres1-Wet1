@@ -1,23 +1,28 @@
 #include "BinarySearchTree.h"
 
 template<class Key,class Info>
-Dict<Key,Info>::Dict(){
+BST<Key,Info>::BST(){
     root = nullptr;
     Size = 0;
 }
 
 template<class Key,class Info>
-typename Dict<Key,Info>::node* Dict<Key, Info>::insert(Key key, Info info){
+BST<Key,Info>::~BST<Key, Info>() {
+    DeleteNode(root);
+}
+
+template<class Key,class Info>
+typename BST<Key,Info>::node* BST<Key, Info>::insert(Key key, Info info){
     return InsertNode(key,info,root);
 }
 
 template<class Key,class Info>
-void Dict<Key,Info>::remove(Key key) {
+void BST<Key,Info>::remove(Key key) {
     RemoveNode(key,root);
 }
 
 template<class Key,class Info>
-typename Dict<Key,Info>::node* Dict<Key, Info>::InsertNode(Key key, Info info, node* NodeToAdd) {
+typename BST<Key,Info>::node* BST<Key, Info>::InsertNode(Key key, Info info, node* NodeToAdd) {
 
     if(NodeToAdd == nullptr)
     {
@@ -65,7 +70,7 @@ typename Dict<Key,Info>::node* Dict<Key, Info>::InsertNode(Key key, Info info, n
 }
 
 template<class Key,class Info>
-typename Dict<Key,Info>::node* Dict<Key,Info>::RotateRight(node *&Node) {
+typename BST<Key,Info>::node* BST<Key,Info>::RotateRight(node *&Node) {
 
     node* TempNode = Node->left_son;
     Node->left_son = TempNode->right_son;
@@ -77,7 +82,7 @@ typename Dict<Key,Info>::node* Dict<Key,Info>::RotateRight(node *&Node) {
 }
 
 template<class Key,class Info>
-typename Dict<Key,Info>::node* Dict<Key,Info>::RotateLeft(node *&Node){
+typename BST<Key,Info>::node* BST<Key,Info>::RotateLeft(node *&Node){
 
     node* TempNode = Node->right_son;
     Node->right = TempNode->left_son;
@@ -88,7 +93,7 @@ typename Dict<Key,Info>::node* Dict<Key,Info>::RotateLeft(node *&Node){
 }
 
 template<class Key,class Info>
-int Dict<Key,Info>::height(node *Node) {
+int BST<Key,Info>::height(node *Node) {
     int Right,Left = 0;
     if(Node == nullptr)
         return 0;
@@ -100,12 +105,12 @@ int Dict<Key,Info>::height(node *Node) {
 }
 
 template<class Key,class Info>
-int Dict<Key,Info>::max(int x, int y) {
+int BST<Key,Info>::max(int x, int y) {
     return (x > y ? x : y);
 }
 
 template<class Key,class Info>
-typename Dict<Key,Info>::node* Dict<Key,Info>::FindSmallestNode(node *Tree) {
+typename BST<Key,Info>::node* BST<Key,Info>::FindSmallestNode(node *Tree) {
     if(Tree == nullptr)
         return nullptr;
     else if(Tree->left_son == nullptr)
@@ -115,7 +120,7 @@ typename Dict<Key,Info>::node* Dict<Key,Info>::FindSmallestNode(node *Tree) {
 }
 
 template<class Key,class Info>
-typename Dict<Key,Info>::node* Dict<Key,Info>::RemoveNode(Key key, node *Tree) {
+typename BST<Key,Info>::node* BST<Key,Info>::RemoveNode(Key key, node *Tree) {
 
     if(Tree == nullptr)
         throw KeyNotFound();
@@ -176,7 +181,7 @@ typename Dict<Key,Info>::node* Dict<Key,Info>::RemoveNode(Key key, node *Tree) {
 }
 
 template<class Key,class Info>
-Info& Dict<Key,Info>::FindNode(Key key,node* Tree){
+Info& BST<Key,Info>::FindNode(Key key,node* Tree){
     if(!Tree)
         throw KeyNotFound();
     if(key > Tree->key)
@@ -189,16 +194,31 @@ Info& Dict<Key,Info>::FindNode(Key key,node* Tree){
 }
 
 template<class Key,class Info>
-int Dict<Key,Info>::GetSize(){
+void BST<Key,Info>::DeleteNode(node *ToDelete) {
+    if(!ToDelete)
+        return;
+    DeleteNode(ToDelete->right_son);
+    DeleteNode(ToDelete->left_son);
+    Size--;
+    delete ToDelete;
+}
+
+template<class Key,class Info>
+int BST<Key,Info>::GetSize(){
     return Size;
 }
 
 template<class Key,class Info>
-int Dict<Key,Info>::GetHeight(){
+int BST<Key,Info>::GetHeight(){
     return height(root);
 }
 
 template<class Key,class Info>
-Info Dict<Key,Info>::Find(Key key) {
+Info& BST<Key,Info>::Find(Key key) {
     return FindNode(key,root);
+}
+
+template<class Key,class Info>
+void BST<Key,Info>::clear() {
+    DeleteNode(root);
 }

@@ -3,19 +3,16 @@
 
 CMakeFiles/untitled.dir/BinarySearchTree.cpp.o: \
  ../BinarySearchTree.cpp \
- ../BinarySearchTree.h \
- ../library1.h
+ ../BinarySearchTree.h
 CMakeFiles/untitled.dir/ImageTagger.cpp.o: \
  ../ImageTagger.cpp
-CMakeFiles/untitled.dir/Library1.cpp.o: \
+CMakeFiles/untitled.dir/LinkedList.cpp.o: \
+ ../LinkedList.cpp \
+ ../LinkedList.h
+CMakeFiles/untitled.dir/library1.cpp.o: \
  ../BinarySearchTree.h \
- ../Library1.cpp \
- ../library1.h
-CMakeFiles/untitled.dir/Part1_List.cpp.o: \
- ../Part1_List.cpp \
- ../library1.h
-CMakeFiles/untitled.dir/Part1_SearchTree.cpp.o: \
- ../Part1_SearchTree.cpp \
+ ../LinkedList.h \
+ ../library1.cpp \
  ../library1.h
 CMakeFiles/untitled.dir/main2.cpp.o: \
  ../BinarySearchTree.h \

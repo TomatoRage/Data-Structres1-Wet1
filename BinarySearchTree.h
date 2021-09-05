@@ -1,10 +1,8 @@
 #ifndef BINARYSEARCHTREE_H
 #define BINARYSEARCHTREE_H
 
-#include "library1.h"
-
 template<class Key,class Info>
-class Dict{
+class BST{
 
     struct node{
 
@@ -30,15 +28,18 @@ class Dict{
     node* RotateLeft(node* &Node);
     node* FindSmallestNode(node* Tree);
     Info& FindNode(Key key,node* Tree);
+    void DeleteNode(node* ToDelete);
 
 public:
 
-    Dict();
+    BST();
+    ~BST();
     node* insert(Key key,Info info);
     void remove(Key key);
     int GetSize();
     int GetHeight();
-    Info Find(Key key);
+    Info& Find(Key key);
+    void clear();
 
     class FailureException{};
     class KeyNotFound: public FailureException{};

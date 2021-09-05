@@ -177,77 +177,53 @@ ImageTagger.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/ImageTagger.cpp.s
 .PHONY : ImageTagger.cpp.s
 
-Library1.o: Library1.cpp.o
-.PHONY : Library1.o
+LinkedList.o: LinkedList.cpp.o
+.PHONY : LinkedList.o
 
 # target to build an object file
-Library1.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/Library1.cpp.o
-.PHONY : Library1.cpp.o
+LinkedList.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/LinkedList.cpp.o
+.PHONY : LinkedList.cpp.o
 
-Library1.i: Library1.cpp.i
-.PHONY : Library1.i
+LinkedList.i: LinkedList.cpp.i
+.PHONY : LinkedList.i
 
 # target to preprocess a source file
-Library1.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/Library1.cpp.i
-.PHONY : Library1.cpp.i
+LinkedList.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/LinkedList.cpp.i
+.PHONY : LinkedList.cpp.i
 
-Library1.s: Library1.cpp.s
-.PHONY : Library1.s
+LinkedList.s: LinkedList.cpp.s
+.PHONY : LinkedList.s
 
 # target to generate assembly for a file
-Library1.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/Library1.cpp.s
-.PHONY : Library1.cpp.s
+LinkedList.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/LinkedList.cpp.s
+.PHONY : LinkedList.cpp.s
 
-Part1_List.o: Part1_List.cpp.o
-.PHONY : Part1_List.o
+library1.o: library1.cpp.o
+.PHONY : library1.o
 
 # target to build an object file
-Part1_List.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/Part1_List.cpp.o
-.PHONY : Part1_List.cpp.o
+library1.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/library1.cpp.o
+.PHONY : library1.cpp.o
 
-Part1_List.i: Part1_List.cpp.i
-.PHONY : Part1_List.i
-
-# target to preprocess a source file
-Part1_List.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/Part1_List.cpp.i
-.PHONY : Part1_List.cpp.i
-
-Part1_List.s: Part1_List.cpp.s
-.PHONY : Part1_List.s
-
-# target to generate assembly for a file
-Part1_List.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/Part1_List.cpp.s
-.PHONY : Part1_List.cpp.s
-
-Part1_SearchTree.o: Part1_SearchTree.cpp.o
-.PHONY : Part1_SearchTree.o
-
-# target to build an object file
-Part1_SearchTree.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/Part1_SearchTree.cpp.o
-.PHONY : Part1_SearchTree.cpp.o
-
-Part1_SearchTree.i: Part1_SearchTree.cpp.i
-.PHONY : Part1_SearchTree.i
+library1.i: library1.cpp.i
+.PHONY : library1.i
 
 # target to preprocess a source file
-Part1_SearchTree.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/Part1_SearchTree.cpp.i
-.PHONY : Part1_SearchTree.cpp.i
+library1.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/library1.cpp.i
+.PHONY : library1.cpp.i
 
-Part1_SearchTree.s: Part1_SearchTree.cpp.s
-.PHONY : Part1_SearchTree.s
+library1.s: library1.cpp.s
+.PHONY : library1.s
 
 # target to generate assembly for a file
-Part1_SearchTree.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/Part1_SearchTree.cpp.s
-.PHONY : Part1_SearchTree.cpp.s
+library1.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/library1.cpp.s
+.PHONY : library1.cpp.s
 
 main2.o: main2.cpp.o
 .PHONY : main2.o
@@ -288,15 +264,12 @@ help:
 	@echo "... ImageTagger.o"
 	@echo "... ImageTagger.i"
 	@echo "... ImageTagger.s"
-	@echo "... Library1.o"
-	@echo "... Library1.i"
-	@echo "... Library1.s"
-	@echo "... Part1_List.o"
-	@echo "... Part1_List.i"
-	@echo "... Part1_List.s"
-	@echo "... Part1_SearchTree.o"
-	@echo "... Part1_SearchTree.i"
-	@echo "... Part1_SearchTree.s"
+	@echo "... LinkedList.o"
+	@echo "... LinkedList.i"
+	@echo "... LinkedList.s"
+	@echo "... library1.o"
+	@echo "... library1.i"
+	@echo "... library1.s"
 	@echo "... main2.o"
 	@echo "... main2.i"
 	@echo "... main2.s"

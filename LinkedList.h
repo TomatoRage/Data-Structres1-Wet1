@@ -1,32 +1,34 @@
-//
-// Created by Ahmad Ghanayem on 05/09/2021.
-//
-
-#ifndef UNTITLED_LINKEDLIST_H
-#define UNTITLED_LINKEDLIST_H
+#ifndef LINKEDLIST_H
+#define LINKEDLIST_H
 
 template<class Key,class Info>
-class Dict{
+class LinkedList{
 
     struct node{
-        Key Key;
-        Info Info;
-        Node *next;
+        Key key;
+        Info info;
+        node *next;
     };
 
     node* head;
     node* tail;
     int Size;
 
+    void deleteNode(node* ToDelete);
+
 public:
 
-    Dict();
+    LinkedList();
+    ~LinkedList();
     node* insert(Key key,Info info);
     void remove(Key key);
     int GetSize();
-    int GetHeight();
-    Info Find(Key key);
+    Info& Find(Key key);
+    void clear();
+
+    class FailureException{};
+    class KeyNotFound: public FailureException{};
 
 };
 
-#endif //UNTITLED_LINKEDLIST_H
+#endif //LINKEDLIST_H
