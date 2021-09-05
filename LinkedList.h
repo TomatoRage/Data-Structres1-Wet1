@@ -14,7 +14,7 @@ class LinkedList{
         Node *next;
     };
 
-    
+
 };
 
 #endif //UNTITLED_LINKEDLIST_H
