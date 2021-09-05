@@ -6,14 +6,26 @@
 #define UNTITLED_LINKEDLIST_H
 
 template<class Key,class Info>
-class LinkedList{
+class Dict{
 
-    struct Node{
+    struct node{
         Key Key;
         Info Info;
         Node *next;
     };
 
+    node* head;
+    node* tail;
+    int Size;
+
+public:
+
+    Dict();
+    node* insert(Key key,Info info);
+    void remove(Key key);
+    int GetSize();
+    int GetHeight();
+    Info Find(Key key);
 
 };
 

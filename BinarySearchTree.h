@@ -4,7 +4,7 @@
 #include "library1.h"
 
 template<class Key,class Info>
-class BST{
+class Dict{
 
     struct node{
 
@@ -33,7 +33,7 @@ class BST{
 
 public:
 
-    BST();
+    Dict();
     node* insert(Key key,Info info);
     void remove(Key key);
     int GetSize();

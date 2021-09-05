@@ -8,6 +8,7 @@ CMakeFiles/untitled.dir/BinarySearchTree.cpp.o: \
 CMakeFiles/untitled.dir/ImageTagger.cpp.o: \
  ../ImageTagger.cpp
 CMakeFiles/untitled.dir/Library1.cpp.o: \
+ ../BinarySearchTree.h \
  ../Library1.cpp \
  ../library1.h
 CMakeFiles/untitled.dir/Part1_List.cpp.o: \
