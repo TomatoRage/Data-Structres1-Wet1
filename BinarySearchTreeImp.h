@@ -2,7 +2,7 @@
 #define UNTITLED_BINARYSEARCHTREEIMP_H
 
 template<class Key,class Info>
-BST<Key,Info>::BST():root(nullptr),Size(0){
+BST<Key,Info>::BST():root(nullptr),iterator(nullptr),PrevIteration(nullptr),Size(0){
 }
 
 template<class Key,class Info>
@@ -29,13 +29,14 @@ typename BST<Key,Info>::node* BST<Key, Info>::InsertNode(Key key, Info info, nod
         NodeToAdd->key = key;
         NodeToAdd->info = info;
         NodeToAdd->Height = 1;
-        NodeToAdd->left_son = NodeToAdd->right_son = nullptr;
+        NodeToAdd->left_son = NodeToAdd->right_son = NodeToAdd->father = nullptr;
         Size++;
     }
 
     else if(key < NodeToAdd->key) {
 
         NodeToAdd->left_son = InsertNode(key,info,NodeToAdd->left_son);
+        NodeToAdd->left_son->father = NodeToAdd;
         if (height(NodeToAdd->left_son) - height(NodeToAdd->right_son) == 2) {
             if (key < NodeToAdd->left_son->key)
                 NodeToAdd = RotateRight(NodeToAdd);
@@ -50,6 +51,7 @@ typename BST<Key,Info>::node* BST<Key, Info>::InsertNode(Key key, Info info, nod
     else if(key > NodeToAdd->key)
     {
         NodeToAdd->right_son = InsertNode(key,info,NodeToAdd->right_son);
+        NodeToAdd->right_son->father = NodeToAdd;
         if(height(NodeToAdd->left_son) - height(NodeToAdd->right_son) == -2)
         {
             if(key > NodeToAdd->right_son->key)
@@ -60,7 +62,8 @@ typename BST<Key,Info>::node* BST<Key, Info>::InsertNode(Key key, Info info, nod
             }
         }
     }
-        NodeToAdd->Height = max(height(NodeToAdd->left_son), height(NodeToAdd->right_son))+1;
+
+    NodeToAdd->Height = max(height(NodeToAdd->left_son), height(NodeToAdd->right_son))+1;
     return NodeToAdd;
 }
 
@@ -70,6 +73,8 @@ typename BST<Key,Info>::node* BST<Key,Info>::RotateRight(node *&Node) {
     node* TempNode = Node->left_son;
     Node->left_son = TempNode->right_son;
     TempNode->right_son = Node;
+    TempNode->father = Node->father;
+    Node->father = TempNode;
     Node->Height = max(height(Node->left_son), height(Node->right_son))+1;
     TempNode->Height = max(height(TempNode->left_son), Node->Height)+1;
     return TempNode;
@@ -82,6 +87,8 @@ typename BST<Key,Info>::node* BST<Key,Info>::RotateLeft(node *&Node){
     node* TempNode = Node->right_son;
     Node->right_son = TempNode->left_son;
     TempNode->left_son = Node;
+    TempNode->father = Node->father;
+    Node->father = TempNode;
     Node->Height = max(height(Node->left_son), height(Node->right_son))+1;
     TempNode->Height = max(height(TempNode->right_son), Node->Height)+1 ;
     return TempNode;
@@ -133,6 +140,8 @@ typename BST<Key,Info>::node* BST<Key,Info>::RemoveNode(Key key, node*& Tree) {
         ToReplace->right_son = Tree->right_son;
         Tree->right_son = temp;
         ToReplace->right_son->left_son = Tree;
+        if(Tree->father)
+            ToReplace->father = Tree->father;
         ToReplace->right_son = RemoveNode(Tree->key, ToReplace->right_son);
     }
     else{
@@ -219,6 +228,31 @@ Info& BST<Key,Info>::Find(Key key) {
 template<class Key,class Info>
 void BST<Key,Info>::clear() {
     DeleteNode(root);
+}
+
+template<class Key,class Info>
+void BST<Key, Info>::ResetIterator(){
+    iterator = root;
+    PrevIteration = nullptr;
+    iterator = FindSmallestNode(iterator);
+}
+
+template<class Key,class Info>
+Info& BST<Key, Info>::NextIteration(Key **key) {
+    if(iterator == nullptr){
+        *key = nullptr;
+        throw FailureException();
+    }
+    else if(PrevIteration == nullptr){
+        **key = iterator->key;
+        iterator = FindSmallestNode(iterator->father->right_son);
+        PrevIteration = iterator->father;
+        return iterator->info;
+    }
+    else if(PrevIteration == iterator->father){
+        iterator = FindSmallestNode(iterator->father->right_son);
+        if(PrevIteration->right_son == iterator){}
+    }
 }
 
 #endif //UNTITLED_BINARYSEARCHTREEIMP_H

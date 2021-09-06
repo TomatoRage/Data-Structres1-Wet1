@@ -17,14 +17,14 @@ public:
     void removeLabel(int SegmentID);
     int GetLabel(int SegmentID);
     int GetNumberOfLabeledSegments();
-    int GetUnlabeledSegments(int* UnlabeledArray);
+    int GetUnlabeledSegments(int** UnlabeledArray);
     int GetLabeledSegments(int* LabeledSegmentsArray,int Label);
 
     class FailureException{};
     class AlreadyLabeled:public FailureException{};
     class SegmentUnlabeled:public FailureException{};
     class ImageFullyLabeled:public FailureException{};
-
+    class InvalidInput:public FailureException{};
 };
 
 #endif //IMAGE_H

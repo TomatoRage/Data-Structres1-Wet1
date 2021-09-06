@@ -94,8 +94,10 @@ void LinkedList<Key,Info>::deleteNode(node *ToDelete)  {
 
 template<class Key,class Info>
 Info& LinkedList<Key,Info>::First(Key** key) {
-    if(head == nullptr)
+    if(head == nullptr){
         *key = nullptr;
+        throw FailureException{};
+    }
     **key = head->key;
     return head->info;
 }
@@ -103,8 +105,10 @@ Info& LinkedList<Key,Info>::First(Key** key) {
 template<class Key,class Info>
 Info& LinkedList<Key,Info>::Next(Key** key) {
     Iterator = Iterator->next;
-    if(Iterator == nullptr)
+    if(Iterator == nullptr){
         *key = nullptr;
+        throw FailureException{};
+    }
     **key = Iterator->key;
     return Iterator->info;
 }

@@ -10,11 +10,14 @@ class BST{
         Info info;
         node* right_son;
         node* left_son;
+        node* father;
         int Height;
 
     };
 
     node* root;
+    node* iterator;
+    node* PrevIteration;
     int Size;
 
     int height(node* Node);
@@ -35,6 +38,8 @@ public:
     node* insert(Key key,Info info);
     void remove(Key key);
     int GetSize();
+    void ResetIterator();
+    Info& NextIteration(Key** key);
     int GetHeight();
     Info& Find(Key key);
     void clear();

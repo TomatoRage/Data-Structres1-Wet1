@@ -20,7 +20,7 @@ Image::~Image() {
 
 void Image::addLabel(int SegmentID, int Label) {
     if(SegmentID > NumOfSegments || SegmentID < 0)
-        throw FailureException();
+        throw InvalidInput();
     if(Segments[SegmentID] != -1)
         throw AlreadyLabeled();
 
@@ -30,7 +30,7 @@ void Image::addLabel(int SegmentID, int Label) {
 
 void Image::removeLabel(int SegmentID) {
     if(SegmentID > NumOfSegments || SegmentID < 0)
-        throw FailureException();
+        throw InvalidInput();
     if(Segments[SegmentID] == -1)
         throw SegmentUnlabeled();
     Segments[SegmentID] = -1;
@@ -39,7 +39,7 @@ void Image::removeLabel(int SegmentID) {
 
 int Image::GetLabel(int SegmentID) {
     if(SegmentID > NumOfSegments || SegmentID < 0)
-        throw FailureException();
+        throw InvalidInput();
     if(Segments[SegmentID] == 1)
         throw SegmentUnlabeled();
     return Segments[SegmentID];
@@ -49,7 +49,7 @@ int Image::GetNumberOfLabeledSegments() {
     return NumOfSegments-UnLabeledSegments.GetSize();
 }
 
-int Image::GetUnlabeledSegments(int* UnlabeledArray) {
+int Image::GetUnlabeledSegments(int** UnlabeledArray) {
     int key,NumberOfSegments = 0;
     int* keyptr = &key;
 
@@ -57,22 +57,25 @@ int Image::GetUnlabeledSegments(int* UnlabeledArray) {
         throw ImageFullyLabeled();
 
     NumberOfSegments = UnLabeledSegments.GetSize();
+    int* Array = (int*) malloc(sizeof(int)*NumberOfSegments);
     UnLabeledSegments.First(&keyptr);
 
     if(keyptr == nullptr)
         throw ImageFullyLabeled();
 
     for(int i = 0; i < UnLabeledSegments.GetSize();i++){
-        UnlabeledArray[i] = key;
+        Array[i] = key;
         UnLabeledSegments.Next(&keyptr);
         if(keyptr == nullptr)
             break;
     }
 
+    *UnlabeledArray = Array;
+
     return NumberOfSegments;
 }
 
-int Image::GetLabeledSegments(int *LabeledSegmentsArray, int Label) {
+int Image::GetLabeledSegments(int* LabeledSegmentsArray, int Label) {
     int count = 0;
     for(int i = 0; i < NumOfSegments;i++){
         if(Segments[i] == -1)

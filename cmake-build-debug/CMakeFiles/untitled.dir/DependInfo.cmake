@@ -8,13 +8,13 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "C:/Users/Ahmad/CLionProjects/untitled/Image.cpp" "C:/Users/Ahmad/CLionProjects/untitled/cmake-build-debug/CMakeFiles/untitled.dir/Image.cpp.obj"
-  "C:/Users/Ahmad/CLionProjects/untitled/ImageTagger.cpp" "C:/Users/Ahmad/CLionProjects/untitled/cmake-build-debug/CMakeFiles/untitled.dir/ImageTagger.cpp.obj"
-  "C:/Users/Ahmad/CLionProjects/untitled/library1.cpp" "C:/Users/Ahmad/CLionProjects/untitled/cmake-build-debug/CMakeFiles/untitled.dir/library1.cpp.obj"
-  "C:/Users/Ahmad/CLionProjects/untitled/library2.cpp" "C:/Users/Ahmad/CLionProjects/untitled/cmake-build-debug/CMakeFiles/untitled.dir/library2.cpp.obj"
-  "C:/Users/Ahmad/CLionProjects/untitled/main2.cpp" "C:/Users/Ahmad/CLionProjects/untitled/cmake-build-debug/CMakeFiles/untitled.dir/main2.cpp.obj"
+  "/Users/ahmadghanayem/CLionProjects/Data-Structres1-Wet1/Image.cpp" "/Users/ahmadghanayem/CLionProjects/Data-Structres1-Wet1/cmake-build-debug/CMakeFiles/untitled.dir/Image.cpp.o"
+  "/Users/ahmadghanayem/CLionProjects/Data-Structres1-Wet1/ImageTagger.cpp" "/Users/ahmadghanayem/CLionProjects/Data-Structres1-Wet1/cmake-build-debug/CMakeFiles/untitled.dir/ImageTagger.cpp.o"
+  "/Users/ahmadghanayem/CLionProjects/Data-Structres1-Wet1/library1.cpp" "/Users/ahmadghanayem/CLionProjects/Data-Structres1-Wet1/cmake-build-debug/CMakeFiles/untitled.dir/library1.cpp.o"
+  "/Users/ahmadghanayem/CLionProjects/Data-Structres1-Wet1/library2.cpp" "/Users/ahmadghanayem/CLionProjects/Data-Structres1-Wet1/cmake-build-debug/CMakeFiles/untitled.dir/library2.cpp.o"
+  "/Users/ahmadghanayem/CLionProjects/Data-Structres1-Wet1/main2.cpp" "/Users/ahmadghanayem/CLionProjects/Data-Structres1-Wet1/cmake-build-debug/CMakeFiles/untitled.dir/main2.cpp.o"
   )
-set(CMAKE_CXX_COMPILER_ID "GNU")
+set(CMAKE_CXX_COMPILER_ID "AppleClang")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
