@@ -128,6 +128,54 @@ untitled/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\untitled.dir\build.make CMakeFiles/untitled.dir/build
 .PHONY : untitled/fast
 
+Image.obj: Image.cpp.obj
+.PHONY : Image.obj
+
+# target to build an object file
+Image.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\untitled.dir\build.make CMakeFiles/untitled.dir/Image.cpp.obj
+.PHONY : Image.cpp.obj
+
+Image.i: Image.cpp.i
+.PHONY : Image.i
+
+# target to preprocess a source file
+Image.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\untitled.dir\build.make CMakeFiles/untitled.dir/Image.cpp.i
+.PHONY : Image.cpp.i
+
+Image.s: Image.cpp.s
+.PHONY : Image.s
+
+# target to generate assembly for a file
+Image.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\untitled.dir\build.make CMakeFiles/untitled.dir/Image.cpp.s
+.PHONY : Image.cpp.s
+
+ImageTagger.obj: ImageTagger.cpp.obj
+.PHONY : ImageTagger.obj
+
+# target to build an object file
+ImageTagger.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\untitled.dir\build.make CMakeFiles/untitled.dir/ImageTagger.cpp.obj
+.PHONY : ImageTagger.cpp.obj
+
+ImageTagger.i: ImageTagger.cpp.i
+.PHONY : ImageTagger.i
+
+# target to preprocess a source file
+ImageTagger.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\untitled.dir\build.make CMakeFiles/untitled.dir/ImageTagger.cpp.i
+.PHONY : ImageTagger.cpp.i
+
+ImageTagger.s: ImageTagger.cpp.s
+.PHONY : ImageTagger.s
+
+# target to generate assembly for a file
+ImageTagger.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\untitled.dir\build.make CMakeFiles/untitled.dir/ImageTagger.cpp.s
+.PHONY : ImageTagger.cpp.s
+
 library1.obj: library1.cpp.obj
 .PHONY : library1.obj
 
@@ -151,6 +199,30 @@ library1.s: library1.cpp.s
 library1.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\untitled.dir\build.make CMakeFiles/untitled.dir/library1.cpp.s
 .PHONY : library1.cpp.s
+
+library2.obj: library2.cpp.obj
+.PHONY : library2.obj
+
+# target to build an object file
+library2.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\untitled.dir\build.make CMakeFiles/untitled.dir/library2.cpp.obj
+.PHONY : library2.cpp.obj
+
+library2.i: library2.cpp.i
+.PHONY : library2.i
+
+# target to preprocess a source file
+library2.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\untitled.dir\build.make CMakeFiles/untitled.dir/library2.cpp.i
+.PHONY : library2.cpp.i
+
+library2.s: library2.cpp.s
+.PHONY : library2.s
+
+# target to generate assembly for a file
+library2.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\untitled.dir\build.make CMakeFiles/untitled.dir/library2.cpp.s
+.PHONY : library2.cpp.s
 
 main2.obj: main2.cpp.obj
 .PHONY : main2.obj
@@ -185,9 +257,18 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... untitled
+	@echo ... Image.obj
+	@echo ... Image.i
+	@echo ... Image.s
+	@echo ... ImageTagger.obj
+	@echo ... ImageTagger.i
+	@echo ... ImageTagger.s
 	@echo ... library1.obj
 	@echo ... library1.i
 	@echo ... library1.s
+	@echo ... library2.obj
+	@echo ... library2.i
+	@echo ... library2.s
 	@echo ... main2.obj
 	@echo ... main2.i
 	@echo ... main2.s

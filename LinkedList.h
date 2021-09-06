@@ -12,6 +12,7 @@ class LinkedList{
 
     node* head;
     node* tail;
+    node* Iterator;
     int Size;
 
     void deleteNode(node* ToDelete);
@@ -24,6 +25,8 @@ public:
     void remove(Key key);
     int GetSize();
     Info& Find(Key key);
+    Info& First(Key** key);
+    Info& Next(Key** key);
     void clear();
 
     class FailureException{};

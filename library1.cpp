@@ -2,6 +2,7 @@
 #include "BinarySearchTree.h"
 #include "LinkedList.h"
 #include "iostream"
+#include "Image.h"
 
 #define TREE
 

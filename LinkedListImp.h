@@ -2,7 +2,7 @@
 #define LINKEDLISTIMP_H
 
 template<class Key,class Info>
-LinkedList<Key,Info>::LinkedList():head(nullptr),tail(nullptr),Size(0){}
+LinkedList<Key,Info>::LinkedList():head(nullptr),tail(nullptr),Size(0),Iterator(nullptr){}
 
 template<class Key,class Info>
 LinkedList<Key,Info>::~LinkedList<Key, Info>() {
@@ -92,4 +92,21 @@ void LinkedList<Key,Info>::deleteNode(node *ToDelete)  {
     delete ToDelete;
 }
 
-#endif //UNTITLED_LINKEDLISTIMP_H
+template<class Key,class Info>
+Info& LinkedList<Key,Info>::First(Key** key) {
+    if(head == nullptr)
+        *key = nullptr;
+    **key = head->key;
+    return head->info;
+}
+
+template<class Key,class Info>
+Info& LinkedList<Key,Info>::Next(Key** key) {
+    Iterator = Iterator->next;
+    if(Iterator == nullptr)
+        *key = nullptr;
+    **key = Iterator->key;
+    return Iterator->info;
+}
+
+#endif //LINKEDLISTIMP_H
