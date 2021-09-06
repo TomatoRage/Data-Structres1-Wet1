@@ -2,9 +2,7 @@
 #define UNTITLED_BINARYSEARCHTREEIMP_H
 
 template<class Key,class Info>
-BST<Key,Info>::BST(){
-    root = nullptr;
-    Size = 0;
+BST<Key,Info>::BST():root(nullptr),Size(0){
 }
 
 template<class Key,class Info>
@@ -23,51 +21,46 @@ void BST<Key,Info>::remove(Key key) {
 }
 
 template<class Key,class Info>
-typename BST<Key,Info>::node* BST<Key, Info>::InsertNode(Key key, Info info, node* NodeToAdd) {
+typename BST<Key,Info>::node* BST<Key, Info>::InsertNode(Key key, Info info, node*& NodeToAdd) {
 
     if(NodeToAdd == nullptr)
     {
         NodeToAdd = new node;
         NodeToAdd->key = key;
         NodeToAdd->info = info;
-        NodeToAdd->Height = 0;
+        NodeToAdd->Height = 1;
         NodeToAdd->left_son = NodeToAdd->right_son = nullptr;
         Size++;
     }
 
-    else if(key < NodeToAdd->key){
+    else if(key < NodeToAdd->key) {
 
-        NodeToAdd->left_son = insert(key, NodeToAdd->left_son);
-        if(height(NodeToAdd->left_son) - height(NodeToAdd->right_son) == 2)
-        {
-            if(key < NodeToAdd->left_son->key)
+        NodeToAdd->left_son = InsertNode(key,info,NodeToAdd->left_son);
+        if (height(NodeToAdd->left_son) - height(NodeToAdd->right_son) == 2) {
+            if (key < NodeToAdd->left_son->key)
                 NodeToAdd = RotateRight(NodeToAdd);
-            else{
+            else {
                 NodeToAdd->left_son = RotateLeft(NodeToAdd->left_son);
                 NodeToAdd = RotateRight(NodeToAdd);
             }
 
         }
-
-        else if(key > NodeToAdd->key)
-        {
-            NodeToAdd->right_son = insert(key, NodeToAdd->right_son);
-            if(height(NodeToAdd->left_son) - height(NodeToAdd->right_son) == -2)
-            {
-                if(key > NodeToAdd->right_son->key)
-                    NodeToAdd = RotateLeft(NodeToAdd);
-                else{
-                    NodeToAdd->right_son = RotateRight(NodeToAdd->right_son);
-                    NodeToAdd = RotateLeft(NodeToAdd);
-                }
-            }
-
-        }
-
-        NodeToAdd->Height = max(height(NodeToAdd->left_son), height(NodeToAdd->right_son))+1;
-        return NodeToAdd;
     }
 
+    else if(key > NodeToAdd->key)
+    {
+        NodeToAdd->right_son = InsertNode(key,info,NodeToAdd->right_son);
+        if(height(NodeToAdd->left_son) - height(NodeToAdd->right_son) == -2)
+        {
+            if(key > NodeToAdd->right_son->key)
+                NodeToAdd = RotateLeft(NodeToAdd);
+            else{
+                NodeToAdd->right_son = RotateRight(NodeToAdd->right_son);
+                NodeToAdd = RotateLeft(NodeToAdd);
+            }
+        }
+    }
+        NodeToAdd->Height = max(height(NodeToAdd->left_son), height(NodeToAdd->right_son))+1;
     return NodeToAdd;
 }
 
@@ -96,7 +89,8 @@ typename BST<Key,Info>::node* BST<Key,Info>::RotateLeft(node *&Node){
 
 template<class Key,class Info>
 int BST<Key,Info>::height(node *Node) {
-    int Right,Left = 0;
+    int Right = 0;
+    int Left = 0;
     if(Node == nullptr)
         return 0;
     if(Node->right_son)
@@ -112,18 +106,16 @@ int BST<Key,Info>::max(int x, int y) {
 }
 
 template<class Key,class Info>
-typename BST<Key,Info>::node* BST<Key,Info>::FindSmallestNode(node *Tree) {
+typename BST<Key,Info>::node* BST<Key,Info>::FindSmallestNode(node* Tree) {
     if(Tree == nullptr)
-        return nullptr;
+        return Tree;
     else if(Tree->left_son == nullptr)
         return Tree;
-    else
-        FindSmallestNode(Tree);
-    return Tree;
+    return FindSmallestNode(Tree->left_son);
 }
 
 template<class Key,class Info>
-typename BST<Key,Info>::node* BST<Key,Info>::RemoveNode(Key key, node *Tree) {
+typename BST<Key,Info>::node* BST<Key,Info>::RemoveNode(Key key, node*& Tree) {
 
     if(Tree == nullptr)
         throw KeyNotFound();
@@ -140,6 +132,7 @@ typename BST<Key,Info>::node* BST<Key,Info>::RemoveNode(Key key, node *Tree) {
         temp = ToReplace->right_son;
         ToReplace->right_son = Tree->right_son;
         Tree->right_son = temp;
+        ToReplace->right_son->left_son = Tree;
         ToReplace->right_son = RemoveNode(Tree->key, ToReplace->right_son);
     }
     else{
@@ -149,6 +142,7 @@ typename BST<Key,Info>::node* BST<Key,Info>::RemoveNode(Key key, node *Tree) {
         else if(Tree->right_son == nullptr)
             Tree = Tree->left_son;
         delete temp;
+        Tree = nullptr;
         Size--;
     }
     if(!Tree)
@@ -199,7 +193,7 @@ Info& BST<Key,Info>::FindNode(Key key,node* Tree){
 
 template<class Key,class Info>
 void BST<Key,Info>::DeleteNode(node *ToDelete) {
-    if(!ToDelete || Size == 1)
+    if(!ToDelete || Size == 1 || Size == 0)
         return;
     DeleteNode(ToDelete->right_son);
     DeleteNode(ToDelete->left_son);
