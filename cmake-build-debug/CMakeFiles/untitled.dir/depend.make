@@ -17,7 +17,6 @@ CMakeFiles/untitled.dir/ImageTagger.cpp.o: \
 CMakeFiles/untitled.dir/library1.cpp.o: \
  ../BinarySearchTree.h \
  ../BinarySearchTreeImp.h \
- ../Image.h \
  ../LinkedList.h \
  ../LinkedListImp.h \
  ../library1.cpp \

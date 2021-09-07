@@ -142,7 +142,7 @@ typename BST<Key,Info>::node* BST<Key,Info>::RemoveNode(Key key, node*& Tree) {
         ToReplace->right_son->left_son = Tree;
         if(Tree->father)
             ToReplace->father = Tree->father;
-        ToReplace->right_son = RemoveNode(Tree->key, ToReplace->right_son);
+        ToReplace->right_son = RemoveNode(ToReplace->key, ToReplace->right_son);
     }
     else{
         node* temp = Tree;

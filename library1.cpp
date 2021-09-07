@@ -2,7 +2,6 @@
 #include "BinarySearchTree.h"
 #include "LinkedList.h"
 #include "iostream"
-#include "Image.h"
 
 #define TREE
 
@@ -88,7 +87,6 @@ void Quit(void** DS){
     if(!DS)
         return;
 #ifdef TREE
-    ((BST<int,void*>*)DS)->clear();
     delete *((BST<int,void*>**)DS);
 #else
     ((LinkedList<int,void*>*)DS)->clear();

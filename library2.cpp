@@ -3,7 +3,7 @@
 #include "library2.h"
 #include "iostream"
 
-void *Init(int segments){
+/*void *Init(int segments){
 
     try{
        ImageTagger* DS = new ImageTagger(segments);
@@ -12,7 +12,7 @@ void *Init(int segments){
         return nullptr;
     }
 
-}
+}*/
 
 StatusType AddImage(void *DS, int imageID){
 
@@ -119,9 +119,9 @@ StatusType GetAllSegmentsByLabel(void *DS, int label, int **images, int **segmen
     return SUCCESS;
 }
 
-void Quit(void** DS){
+/*void Quit(void** DS){
     if(!DS)
         return;
     delete *(ImageTagger**)DS;
     DS = nullptr;
-}
+}*/
