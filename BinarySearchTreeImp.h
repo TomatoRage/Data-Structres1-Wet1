@@ -17,7 +17,7 @@ typename BST<Key,Info>::node* BST<Key, Info>::insert(Key key, Info info){
 
 template<class Key,class Info>
 void BST<Key,Info>::remove(Key key) {
-    RemoveNode(key,root);
+    root = RemoveNode(key,root);
 }
 
 template<class Key,class Info>
@@ -72,6 +72,8 @@ typename BST<Key,Info>::node* BST<Key,Info>::RotateRight(node *&Node) {
 
     node* TempNode = Node->left_son;
     Node->left_son = TempNode->right_son;
+    if(Node->left_son)
+        Node->left_son->father = Node;
     TempNode->right_son = Node;
     TempNode->father = Node->father;
     Node->father = TempNode;
@@ -86,6 +88,8 @@ typename BST<Key,Info>::node* BST<Key,Info>::RotateLeft(node *&Node){
 
     node* TempNode = Node->right_son;
     Node->right_son = TempNode->left_son;
+    if(Node->right_son)
+        Node->right_son->father = Node;
     TempNode->left_son = Node;
     TempNode->father = Node->father;
     Node->father = TempNode;
@@ -122,7 +126,7 @@ typename BST<Key,Info>::node* BST<Key,Info>::FindSmallestNode(node* Tree) {
 }
 
 template<class Key,class Info>
-typename BST<Key,Info>::node* BST<Key,Info>::RemoveNode(Key key, node*& Tree) {
+typename BST<Key,Info>::node* BST<Key,Info>::RemoveNode(Key key, node* Tree) {
 
     if(Tree == nullptr)
         throw KeyNotFound();
@@ -134,24 +138,35 @@ typename BST<Key,Info>::node* BST<Key,Info>::RemoveNode(Key key, node*& Tree) {
 
     else if(Tree->left_son && Tree->right_son)
     {
-        node* temp,*ToReplace = FindSmallestNode(Tree->right_son);
-        ToReplace->left_son = Tree->left_son;
-        temp = ToReplace->right_son;
-        ToReplace->right_son = Tree->right_son;
-        Tree->right_son = temp;
-        ToReplace->right_son->left_son = Tree;
-        if(Tree->father)
-            ToReplace->father = Tree->father;
-        ToReplace->right_son = RemoveNode(ToReplace->key, ToReplace->right_son);
+        node* Temp = FindSmallestNode(Tree->right_son);
+        Tree->key = Temp->key;
+        Tree->info = Temp->info;
+        Tree->right_son = RemoveNode(Tree->key,Tree->right_son);
     }
     else{
         node* temp = Tree;
-        if(Tree->left_son == nullptr)
+        if(Tree->left_son == nullptr){
             Tree = Tree->right_son;
-        else if(Tree->right_son == nullptr)
+            if(Tree && temp->father){
+                Tree->father = temp->father;
+                if(Tree->father->right_son == temp)
+                    Tree->father->right_son = Tree;
+                else
+                    Tree->father->left_son = temp;
+            }
+        }
+        else if(Tree->right_son == nullptr){
             Tree = Tree->left_son;
+            if(Tree && temp->father) {
+                Tree->father = temp->father;
+                if (Tree->father->right_son == temp)
+                    Tree->father->right_son = Tree;
+                else
+                    Tree->father->left_son = temp;
+            }
+        }
+
         delete temp;
-        Tree = nullptr;
         Size--;
     }
     if(!Tree)
@@ -243,16 +258,30 @@ Info& BST<Key, Info>::NextIteration(Key **key) {
         *key = nullptr;
         throw FailureException();
     }
-    else if(PrevIteration == nullptr){
-        **key = iterator->key;
-        iterator = FindSmallestNode(iterator->father->right_son);
-        PrevIteration = iterator->father;
-        return iterator->info;
+    **key = iterator->key;
+    Info toReturn = iterator->info;
+    if(PrevIteration == nullptr){
+        PrevIteration = iterator;
+        iterator = iterator->father;
     }
-    else if(PrevIteration == iterator->father){
-        iterator = FindSmallestNode(iterator->father->right_son);
-        if(PrevIteration->right_son == iterator){}
+    else if(PrevIteration == iterator->left_son){
+        PrevIteration = iterator;
+        if(iterator->father->right_son)
+            iterator = FindSmallestNode(iterator->right_son);
+        else
+            iterator->father;
+        if(PrevIteration->right_son == iterator){
+            PrevIteration = iterator->father;
+            iterator = iterator->father->father;
+        }
+        else{
+
+        }
+    }else if(PrevIteration == iterator->father){
+        iterator = iterator->father->father;
     }
+    return toReturn;
 }
+
 
 #endif //UNTITLED_BINARYSEARCHTREEIMP_H

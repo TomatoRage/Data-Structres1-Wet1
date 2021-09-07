@@ -24,7 +24,7 @@ class BST{
     int max(int x,int y);
 
     node* InsertNode(Key key,Info info, node*& NodeToAdd);
-    node* RemoveNode(Key key,node*& NodeToRemove);
+    node* RemoveNode(Key key,node* NodeToRemove);
     node* RotateRight(node* &Node);
     node* RotateLeft(node* &Node);
     node* FindSmallestNode(node* Tree);

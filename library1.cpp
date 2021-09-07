@@ -92,5 +92,5 @@ void Quit(void** DS){
     ((LinkedList<int,void*>*)DS)->clear();
     delete *((LinkedList<int,void*>**)DS);
 #endif
-    DS = nullptr;
+    *DS = nullptr;
 }
