@@ -1,12 +1,10 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/untitled.dir/Image.cpp.obj"
-  "CMakeFiles/untitled.dir/ImageTagger.cpp.obj"
-  "CMakeFiles/untitled.dir/library1.cpp.obj"
-  "CMakeFiles/untitled.dir/library2.cpp.obj"
-  "CMakeFiles/untitled.dir/main2.cpp.obj"
-  "libuntitled.dll.a"
-  "untitled.exe"
-  "untitled.exe.manifest"
+  "CMakeFiles/untitled.dir/Image.cpp.o"
+  "CMakeFiles/untitled.dir/ImageTagger.cpp.o"
+  "CMakeFiles/untitled.dir/library1.cpp.o"
+  "CMakeFiles/untitled.dir/library2.cpp.o"
+  "CMakeFiles/untitled.dir/main2.cpp.o"
+  "untitled"
   "untitled.pdb"
 )
 

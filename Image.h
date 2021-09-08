@@ -11,9 +11,12 @@ class Image{
 
 public:
 
+    Image();
     explicit Image(int segments);
     ~Image();
+    Image(Image& other);
     void addLabel(int SegmentID,int Label);
+    void SetSegmentSize(int segments);
     void removeLabel(int SegmentID);
     int GetLabel(int SegmentID);
     int GetNumberOfLabeledSegments();

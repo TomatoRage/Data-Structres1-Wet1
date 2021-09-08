@@ -23,8 +23,8 @@ class BST{
     int height(node* Node);
     int max(int x,int y);
 
-    node* InsertNode(Key key,Info info, node*& NodeToAdd);
-    node* RemoveNode(Key key,node* NodeToRemove);
+    node*& InsertNode(Key key,Info& info, node*& NodeToAdd);
+    node* RemoveNode(Key key,node* Tree);
     node* RotateRight(node* &Node);
     node* RotateLeft(node* &Node);
     node* FindSmallestNode(node* Tree);
@@ -35,7 +35,7 @@ public:
 
     BST();
     ~BST();
-    node* insert(Key key,Info info);
+    node* insert(Key key,Info& info);
     void remove(Key key);
     int GetSize();
     void ResetIterator();

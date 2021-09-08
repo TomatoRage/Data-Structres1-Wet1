@@ -6,7 +6,7 @@
 
 class ImageTagger {
 
-    BST<int,Image*> ImageContainer;
+    BST<int,Image> ImageContainer;
     int ImageSegments;
 
 public:

@@ -3,7 +3,7 @@
 #include "library2.h"
 #include "iostream"
 
-/*void *Init(int segments){
+void *Init(int segments){
 
     try{
        ImageTagger* DS = new ImageTagger(segments);
@@ -12,7 +12,7 @@
         return nullptr;
     }
 
-}*/
+}
 
 StatusType AddImage(void *DS, int imageID){
 
@@ -22,8 +22,7 @@ StatusType AddImage(void *DS, int imageID){
         ((ImageTagger*)DS)->AddImage(imageID);
     }catch(std::bad_alloc& e){
         return ALLOCATION_ERROR;
-    }
-    catch(...){
+    }catch(...){
         return FAILURE;
     }
     return SUCCESS;
@@ -108,7 +107,7 @@ StatusType GetAllSegmentsByLabel(void *DS, int label, int **images, int **segmen
     if(!DS || !images || !segments || !numOfSegments)
         return INVALID_INPUT;
     try{
-        ((ImageTagger*)DS)->GetAllByLabel(label,images,segments);
+       *numOfSegments =  ((ImageTagger*)DS)->GetAllByLabel(label,images,segments);
     }catch(std::bad_alloc&){
         return ALLOCATION_ERROR;
     }catch(Image::InvalidInput&){
@@ -119,9 +118,9 @@ StatusType GetAllSegmentsByLabel(void *DS, int label, int **images, int **segmen
     return SUCCESS;
 }
 
-/*void Quit(void** DS){
+void Quit(void** DS){
     if(!DS)
         return;
     delete *(ImageTagger**)DS;
-    DS = nullptr;
-}*/
+    *DS = nullptr;
+}

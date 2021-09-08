@@ -11,7 +11,7 @@ BST<Key,Info>::~BST<Key, Info>() {
 }
 
 template<class Key,class Info>
-typename BST<Key,Info>::node* BST<Key, Info>::insert(Key key, Info info){
+typename BST<Key,Info>::node* BST<Key, Info>::insert(Key key, Info& info){
     return InsertNode(key,info,root);
 }
 
@@ -21,7 +21,7 @@ void BST<Key,Info>::remove(Key key) {
 }
 
 template<class Key,class Info>
-typename BST<Key,Info>::node* BST<Key, Info>::InsertNode(Key key, Info info, node*& NodeToAdd) {
+typename BST<Key,Info>::node*& BST<Key, Info>::InsertNode(Key key,Info& info, node*& NodeToAdd) {
 
     if(NodeToAdd == nullptr)
     {
@@ -206,12 +206,9 @@ Info& BST<Key,Info>::FindNode(Key key,node* Tree){
     if(!Tree)
         throw KeyNotFound();
     if(key > Tree->key)
-        FindNode(key,Tree->right_son);
+        return FindNode(key,Tree->right_son);
     else if(key < Tree->key)
-        FindNode(key,Tree->left_son);
-    else{
-        return Tree->info;
-    }
+        return FindNode(key,Tree->left_son);
     return Tree->info;
 }
 
@@ -254,7 +251,26 @@ void BST<Key, Info>::ResetIterator(){
 
 template<class Key,class Info>
 Info& BST<Key, Info>::NextIteration(Key **key) {
-    if(iterator == nullptr){
+   if(iterator == nullptr)
+       throw FailureException{};
+    **key = iterator->key;
+    Info& Temp = iterator->info;
+    if (iterator->right_son) {
+        iterator = iterator->right_son;
+        while (iterator->left_son) {
+            iterator = iterator->left_son;
+        }
+    } else {
+        while (iterator->father && iterator == iterator->father->right_son) {
+            iterator = iterator->father;
+        }
+        iterator = iterator->father;
+    }
+    return Temp;
+}
+
+/*
+     if(iterator == nullptr){
         *key = nullptr;
         throw FailureException();
     }
@@ -280,8 +296,6 @@ Info& BST<Key, Info>::NextIteration(Key **key) {
     }else if(PrevIteration == iterator->father){
         iterator = iterator->father->father;
     }
-    return toReturn;
-}
-
+    return toReturn;*/
 
 #endif //UNTITLED_BINARYSEARCHTREEIMP_H

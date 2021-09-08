@@ -1,20 +1,44 @@
 #include "Image.h"
 #include <stdlib.h>
 
-Image::Image(int segments){
-
-    NumOfSegments = segments;
-    Segments = new int[segments];
+Image::Image(int segments):Segments(new int[segments]),NumOfSegments(segments){
 
     for(int i = 0; i < segments;i++){
         this->UnLabeledSegments.insert(i,-1);
-        Segments[i] = -1;
+        this->Segments[i] = -1;
     }
 
 }
 
+Image::Image():Segments(nullptr),NumOfSegments(0) {}
+
+Image::Image(Image& other){
+    int Key,temp;
+    int* Key_ptr = &Key;
+    NumOfSegments = other.NumOfSegments;
+    Segments = new int[NumOfSegments];
+    for(int i = 0; i < NumOfSegments;i++)
+        Segments[i] = other.Segments[i];
+    temp = other.UnLabeledSegments.First(&Key_ptr);
+    if(Key_ptr)
+        UnLabeledSegments.insert(Key,temp);
+    for(int i=1;i < other.UnLabeledSegments.GetSize();i++){
+        temp = other.UnLabeledSegments.Next(&Key_ptr);
+        if(Key_ptr)
+            UnLabeledSegments.insert(Key,temp);
+    }
+}
+
+void Image::SetSegmentSize(int segments) {
+    if(segments <= 0 || NumOfSegments != 0)
+        return;
+    Segments = new int[segments];
+    NumOfSegments = segments;
+    for(int i = 0; i < NumOfSegments;i++)
+        Segments[i] = -1;
+}
+
 Image::~Image() {
-    UnLabeledSegments.clear();
     delete[] Segments;
 }
 
@@ -31,6 +55,7 @@ void Image::addLabel(int SegmentID, int Label) {
 void Image::removeLabel(int SegmentID) {
     if(SegmentID > NumOfSegments || SegmentID < 0)
         throw InvalidInput();
+    int x = Segments[SegmentID];
     if(Segments[SegmentID] == -1)
         throw SegmentUnlabeled();
     Segments[SegmentID] = -1;
@@ -50,7 +75,7 @@ int Image::GetNumberOfLabeledSegments() {
 }
 
 int Image::GetUnlabeledSegments(int** UnlabeledArray) {
-    int key,NumberOfSegments = 0;
+    int key,i,NumberOfSegments = 0;
     int* keyptr = &key;
 
     if(GetNumberOfLabeledSegments() == NumOfSegments)
@@ -63,12 +88,14 @@ int Image::GetUnlabeledSegments(int** UnlabeledArray) {
     if(keyptr == nullptr)
         throw ImageFullyLabeled();
 
-    for(int i = 0; i < UnLabeledSegments.GetSize();i++){
+    for(i = 0; i < UnLabeledSegments.GetSize()-1;i++){
         Array[i] = key;
         UnLabeledSegments.Next(&keyptr);
         if(keyptr == nullptr)
             break;
     }
+
+    Array[i] = key;
 
     *UnlabeledArray = Array;
 

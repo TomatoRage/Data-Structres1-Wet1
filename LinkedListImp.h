@@ -98,17 +98,18 @@ Info& LinkedList<Key,Info>::First(Key** key) {
         *key = nullptr;
         throw FailureException{};
     }
+    Iterator = head;
     **key = head->key;
     return head->info;
 }
 
 template<class Key,class Info>
 Info& LinkedList<Key,Info>::Next(Key** key) {
-    Iterator = Iterator->next;
     if(Iterator == nullptr){
         *key = nullptr;
         throw FailureException{};
     }
+    Iterator = Iterator->next;
     **key = Iterator->key;
     return Iterator->info;
 }

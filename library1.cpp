@@ -5,7 +5,7 @@
 
 #define TREE
 
-void *Init(){
+/*void *Init(){
     try {
 #ifdef TREE
         auto DS = new BST<int,void*>();
@@ -17,7 +17,7 @@ void *Init(){
     }catch (std::bad_alloc& e){
         return nullptr;
     }
-}
+}*/
 
 StatusType Add(void *DS, int key, void* value, void** node){
     if(!DS || !node)
@@ -83,7 +83,7 @@ StatusType Size(void *DS, int *n){
     return SUCCESS;
 }
 
-void Quit(void** DS){
+/*void Quit(void** DS){
     if(!DS)
         return;
 #ifdef TREE
@@ -93,4 +93,4 @@ void Quit(void** DS){
     delete *((LinkedList<int,void*>**)DS);
 #endif
     *DS = nullptr;
-}
+}*/
