@@ -16,7 +16,7 @@ void *Init(int segments){
 
 StatusType AddImage(void *DS, int imageID){
 
-    if(!DS || imageID < 0)
+    if(!DS || imageID <= 0)
         return INVALID_INPUT;
     try{
         ((ImageTagger*)DS)->AddImage(imageID);
@@ -31,7 +31,7 @@ StatusType AddImage(void *DS, int imageID){
 
 StatusType DeleteImage(void *DS, int imageID){
 
-    if(!DS || imageID < 0)
+    if(!DS || imageID <= 0)
         return INVALID_INPUT;
     try {
         ((ImageTagger *) DS)->DeleteImage(imageID);
@@ -104,7 +104,7 @@ StatusType GetAllUnLabeledSegments(void *DS, int imageID, int **segments, int *n
 }
 
 StatusType GetAllSegmentsByLabel(void *DS, int label, int **images, int **segments, int *numOfSegments){
-    if(!DS || !images || !segments || !numOfSegments)
+    if(!DS || !images || !segments || !numOfSegments || label <= 0)
         return INVALID_INPUT;
     try{
        *numOfSegments =  ((ImageTagger*)DS)->GetAllByLabel(label,images,segments);
@@ -121,6 +121,7 @@ StatusType GetAllSegmentsByLabel(void *DS, int label, int **images, int **segmen
 void Quit(void** DS){
     if(!DS)
         return;
+    (*((ImageTagger**)DS))->Clear();
     delete *(ImageTagger**)DS;
     *DS = nullptr;
 }

@@ -29,6 +29,10 @@ Image::Image(Image& other){
     }
 }
 
+Image::~Image() {
+    delete[] Segments;
+}
+
 void Image::SetSegmentSize(int segments) {
     if(segments <= 0 || NumOfSegments != 0)
         return;
@@ -36,10 +40,6 @@ void Image::SetSegmentSize(int segments) {
     NumOfSegments = segments;
     for(int i = 0; i < NumOfSegments;i++)
         Segments[i] = -1;
-}
-
-Image::~Image() {
-    delete[] Segments;
 }
 
 void Image::addLabel(int SegmentID, int Label) {
@@ -55,7 +55,6 @@ void Image::addLabel(int SegmentID, int Label) {
 void Image::removeLabel(int SegmentID) {
     if(SegmentID > NumOfSegments || SegmentID < 0)
         throw InvalidInput();
-    int x = Segments[SegmentID];
     if(Segments[SegmentID] == -1)
         throw SegmentUnlabeled();
     Segments[SegmentID] = -1;
@@ -65,7 +64,7 @@ void Image::removeLabel(int SegmentID) {
 int Image::GetLabel(int SegmentID) {
     if(SegmentID > NumOfSegments || SegmentID < 0)
         throw InvalidInput();
-    if(Segments[SegmentID] == 1)
+    if(Segments[SegmentID] == -1)
         throw SegmentUnlabeled();
     return Segments[SegmentID];
 }

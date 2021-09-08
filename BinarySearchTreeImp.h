@@ -2,8 +2,7 @@
 #define UNTITLED_BINARYSEARCHTREEIMP_H
 
 template<class Key,class Info>
-BST<Key,Info>::BST():root(nullptr),iterator(nullptr),PrevIteration(nullptr),Size(0){
-}
+BST<Key,Info>::BST():root(nullptr),iterator(nullptr),Size(0){}
 
 template<class Key,class Info>
 BST<Key,Info>::~BST<Key, Info>() {
@@ -32,6 +31,8 @@ typename BST<Key,Info>::node*& BST<Key, Info>::InsertNode(Key key,Info& info, no
         NodeToAdd->left_son = NodeToAdd->right_son = NodeToAdd->father = nullptr;
         Size++;
     }
+    else if(key == NodeToAdd->key)
+        throw FailureException{};
 
     else if(key < NodeToAdd->key) {
 
@@ -213,8 +214,8 @@ Info& BST<Key,Info>::FindNode(Key key,node* Tree){
 }
 
 template<class Key,class Info>
-void BST<Key,Info>::DeleteNode(node *ToDelete) {
-    if(!ToDelete || Size == 1 || Size == 0)
+void BST<Key,Info>::DeleteNode(node*& ToDelete) {
+    if(!ToDelete || Size == 0)
         return;
     DeleteNode(ToDelete->right_son);
     DeleteNode(ToDelete->left_son);
@@ -245,7 +246,6 @@ void BST<Key,Info>::clear() {
 template<class Key,class Info>
 void BST<Key, Info>::ResetIterator(){
     iterator = root;
-    PrevIteration = nullptr;
     iterator = FindSmallestNode(iterator);
 }
 
@@ -268,34 +268,5 @@ Info& BST<Key, Info>::NextIteration(Key **key) {
     }
     return Temp;
 }
-
-/*
-     if(iterator == nullptr){
-        *key = nullptr;
-        throw FailureException();
-    }
-    **key = iterator->key;
-    Info toReturn = iterator->info;
-    if(PrevIteration == nullptr){
-        PrevIteration = iterator;
-        iterator = iterator->father;
-    }
-    else if(PrevIteration == iterator->left_son){
-        PrevIteration = iterator;
-        if(iterator->father->right_son)
-            iterator = FindSmallestNode(iterator->right_son);
-        else
-            iterator->father;
-        if(PrevIteration->right_son == iterator){
-            PrevIteration = iterator->father;
-            iterator = iterator->father->father;
-        }
-        else{
-
-        }
-    }else if(PrevIteration == iterator->father){
-        iterator = iterator->father->father;
-    }
-    return toReturn;*/
 
 #endif //UNTITLED_BINARYSEARCHTREEIMP_H

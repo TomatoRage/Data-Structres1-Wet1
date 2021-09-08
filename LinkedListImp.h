@@ -2,7 +2,7 @@
 #define LINKEDLISTIMP_H
 
 template<class Key,class Info>
-LinkedList<Key,Info>::LinkedList():head(nullptr),tail(nullptr),Size(0),Iterator(nullptr){}
+LinkedList<Key,Info>::LinkedList():head(nullptr),tail(nullptr),Iterator(nullptr){ Size = 0; }
 
 template<class Key,class Info>
 LinkedList<Key,Info>::~LinkedList<Key, Info>() {

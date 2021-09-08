@@ -5,34 +5,34 @@
 ImageTagger::ImageTagger(int segments):ImageSegments(segments) {}
 
 void ImageTagger::AddImage(int ImageID) {
-    ImageContainer.insert(ImageID,*(new Image(ImageSegments)));
+   Image *Temp = new Image(ImageSegments);
+   ImageContainer.insert(ImageID,Temp);
 }
 
 void ImageTagger::DeleteImage(int ImageID) {
+    Image* temp = ImageContainer.Find(ImageID);
     ImageContainer.remove(ImageID);
+    delete temp;
 }
 
 void ImageTagger::LabelImage(int ImageID, int segmentID, int Label) {
-    Image& Temp = ImageContainer.Find(ImageID);
-    Temp.addLabel(segmentID,Label);
-    int x = 5;
+    Image*& Temp = ImageContainer.Find(ImageID);
+    Temp->addLabel(segmentID,Label);
 }
 
 void ImageTagger::GetLabel(int ImageID, int segmentID, int *label) {
-    Image Temp = ImageContainer.Find(ImageID);
-    *label = Temp.GetLabel(segmentID);
+    Image*& Temp = ImageContainer.Find(ImageID);
+    *label = Temp->GetLabel(segmentID);
 }
 
 void ImageTagger::RemoveLabel(int ImageID, int SegmentID) {
-    Image& Temp = ImageContainer.Find(ImageID);
-    Image& CC = Temp;
-    Temp.removeLabel(SegmentID);
-    Image& KK = Temp;
+    Image*& Temp = ImageContainer.Find(ImageID);
+    Temp->removeLabel(SegmentID);
 }
 
 int ImageTagger::GetAllUnlabeled(int ImageID,int** segments) {
-    Image& Temp = ImageContainer.Find(ImageID);
-    return Temp.GetUnlabeledSegments(segments);
+    Image*& Temp = ImageContainer.Find(ImageID);
+    return Temp->GetUnlabeledSegments(segments);
 }
 
 int ImageTagger::GetAllByLabel(int label,int** ImagesArray, int** SegmentsArray) {
@@ -53,8 +53,8 @@ int ImageTagger::GetAllByLabel(int label,int** ImagesArray, int** SegmentsArray)
             Temp[j] = -1;
         }
 
-        Image& currentimage = ImageContainer.NextIteration(&key_ptr);
-        NumLabeled = currentimage.GetLabeledSegments(Temp,label);
+        Image*& currentimage = ImageContainer.NextIteration(&key_ptr);
+        NumLabeled = currentimage->GetLabeledSegments(Temp,label);
 
         for(int k = TotalLabeled; k < TotalLabeled+NumLabeled;k++){
             segments[k] = Temp[k-TotalLabeled];
@@ -68,11 +68,26 @@ int ImageTagger::GetAllByLabel(int label,int** ImagesArray, int** SegmentsArray)
     Images = (int*)realloc(Images,sizeof(int)*TotalLabeled);
     free(Temp);
 
-    if(!(segments || Images))
+    if(!(segments || Images) && TotalLabeled != 0)
         throw std::bad_alloc();
+    else if(TotalLabeled == 0){
+        *ImagesArray = nullptr;
+        *SegmentsArray = nullptr;
+        return 0;
+    }
 
     *ImagesArray = Images;
     *SegmentsArray = segments;
 
     return TotalLabeled;
+}
+
+void ImageTagger::Clear() {
+    int key;
+    int* key_ptr = &key;
+    ImageContainer.ResetIterator();
+    for(int i = 0; i < ImageContainer.GetSize();i++){
+        Image* Temp =  ImageContainer.NextIteration(&key_ptr);
+        delete Temp;
+    }
 }

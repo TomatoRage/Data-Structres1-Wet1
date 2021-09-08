@@ -17,7 +17,6 @@ class BST{
 
     node* root;
     node* iterator;
-    node* PrevIteration;
     int Size;
 
     int height(node* Node);
@@ -29,7 +28,7 @@ class BST{
     node* RotateLeft(node* &Node);
     node* FindSmallestNode(node* Tree);
     Info& FindNode(Key key,node* Tree);
-    void DeleteNode(node* ToDelete);
+    void DeleteNode(node*& ToDelete);
 
 public:
 

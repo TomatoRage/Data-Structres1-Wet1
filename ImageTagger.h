@@ -6,7 +6,7 @@
 
 class ImageTagger {
 
-    BST<int,Image> ImageContainer;
+    BST<int,Image*> ImageContainer;
     int ImageSegments;
 
 public:
@@ -19,6 +19,7 @@ public:
     void RemoveLabel(int ImageID,int SegmentID);
     int GetAllUnlabeled(int ImageID,int** segments);
     int GetAllByLabel(int label,int** ImagesArray,int** SegmentsArray);
+    void Clear();
 };
 
 
